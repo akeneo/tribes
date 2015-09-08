@@ -4,13 +4,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <services>
-        <service id="akeneo_api.example" class="Akeneo\Bundle\ApiBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service
+                id="akeneo_api.repository.event"
+                class="Doctrine\ODM\MongoDB\DocumentRepository"
+                factory-service="doctrine.odm.mongodb.document_manager"
+                factory-method="getRepository">
+            <argument>Akeneo\Bundle\ApiBundle\Document\Event</argument>
+        </service>
+
+        <service id="akeneo_api.form.type.event" class="Akeneo\Bundle\ApiBundle\Form\Type\EventType">
+            <tag name="form.type" alias="event" />
+        </service>
+
+        <service id="akeneo_api.controller.event" class="Akeneo\Bundle\ApiBundle\Controller\EventController">
+            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+            <argument type="service" id="akeneo_api.repository.event" />
+            <argument type="service" id="form.factory" />
         </service>
     </services>
-    -->
+
 </container>
