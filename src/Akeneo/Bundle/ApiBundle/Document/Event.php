@@ -3,10 +3,10 @@
 namespace Akeneo\Bundle\ApiBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Symfony\Component\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @MongoDB\Document
+ * @MongoDB\Document(collection="event")
  */
 class Event
 {
@@ -20,20 +20,46 @@ class Event
     /**
      * @var string
      *
+     * @Assert\Url
      * @MongoDB\String
      */
     private $link;
 
     /**
-     * Event constructor.
+     * @var Place
      *
-     * @param $link
+     * @Assert\NotNull
+     * @MongoDB\EmbedOne(targetDocument="Place")
      */
-    public function __construct($link)
-    {
-        $this->link = $link;
-    }
+    private $place;
 
+    /**
+     * @var \DateTime
+     *
+     * @Assert\NotNull
+     * @MongoDB\Date
+     */
+    private $plannedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @MongoDB\Date
+     */
+    private $createdAt;
+
+    /**
+     * @param Place     $place
+     * @param \DateTime $plannedAt
+     * @param string    $link
+     */
+    public function __construct(Place $place = null, \DateTime $plannedAt = null, $link = null)
+    {
+        $this->place = $place;
+        $this->plannedAt = $plannedAt;
+        $this->link = $link;
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * @return string
@@ -65,5 +91,53 @@ class Event
     public function setLink($link)
     {
         $this->link = $link;
+    }
+
+    /**
+     * @return Place
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * @param Place $place
+     */
+    public function setPlace(Place $place)
+    {
+        $this->place = $place;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPlannedAt()
+    {
+        return $this->plannedAt;
+    }
+
+    /**
+     * @param \DateTime $plannedAt
+     */
+    public function setPlannedAt($plannedAt)
+    {
+        $this->plannedAt = $plannedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 }

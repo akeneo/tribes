@@ -13,8 +13,25 @@
             <argument>Akeneo\Bundle\ApiBundle\Document\Event</argument>
         </service>
 
+        <service id="sensio.request.param_converter.doctrine.mongodb" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter">
+            <argument type="service" id="doctrine_mongodb" />
+            <tag name="request.param_converter" converter="doctrine.odm" />
+        </service>
+
         <service id="akeneo_api.form.type.event" class="Akeneo\Bundle\ApiBundle\Form\Type\EventType">
             <tag name="form.type" alias="event" />
+        </service>
+
+        <service id="akeneo_api.form.type.place" class="Akeneo\Bundle\ApiBundle\Form\Type\PlaceType">
+            <tag name="form.type" alias="place" />
+        </service>
+
+        <service id="akeneo_api.form.type.location" class="Akeneo\Bundle\ApiBundle\Form\Type\LocationType">
+            <tag name="form.type" alias="location" />
+        </service>
+
+        <service id="akeneo_api.serializer.normalizer.datetime" class="Akeneo\Bundle\ApiBundle\Serializer\Normalizer\DateTimeNormalizer">
+            <tag name="serializer.normalizer" />
         </service>
 
         <service id="akeneo_api.controller.event" class="Akeneo\Bundle\ApiBundle\Controller\EventController">

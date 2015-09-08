@@ -60,3 +60,6 @@ fos_rest:
 
     routing_loader:
         default_format: json
+
+    exception:
+        enabled: true

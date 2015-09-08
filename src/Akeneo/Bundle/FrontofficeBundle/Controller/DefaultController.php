@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * Class DefaultController
+ * Class DefaultController.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)

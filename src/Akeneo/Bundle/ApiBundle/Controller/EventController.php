@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class EventController
+ * Class EventController.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
@@ -47,13 +47,14 @@ class EventController implements ClassResourceInterface
         DocumentRepository $repository,
         FormFactoryInterface $formFactory
     ) {
-        $this->manager     = $manager;
-        $this->repository  = $repository;
+        $this->manager = $manager;
+        $this->repository = $repository;
         $this->formFactory = $formFactory;
     }
 
     /**
      * @Rest\View
+     *
      * @return array
      */
     public function cgetAction()
@@ -75,10 +76,9 @@ class EventController implements ClassResourceInterface
     public function postAction(Request $request)
     {
         $form = $this->formFactory->create('event');
-        $form->handleRequest($request);
+        $form->submit($request->request->all());
 
         if (!$form->isValid()) {
-
             return View::create($form, 400);
         }
 
