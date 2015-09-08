@@ -1,3 +1,9 @@
-app:
-    resource: "@AppBundle/Controller/"
+akeneo_frontoffice:
+    resource: "@AkeneoFrontofficeBundle/Resources/config/routing.xml"
+    type:     rest
+    prefix:   /
+
+akeneo_api:
+    resource: "@AkeneoApiBundle/Resources/config/routing.xml"
     type:     annotation
+    prefix:   /api/
