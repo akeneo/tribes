@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Ping{% endblock %}</title>
-        {% stylesheets
-        'css/materialize.min.css'
-        'css/main.css'
-        filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <nav>
-        <div class="nav-wrapper deep-purple darken-3">
-            <a href="#" class="brand-logo">Ping</a>
-        </div>
-    </nav>
-    <body>
-        <header>
-            coucou
-        </header>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Ping{% endblock %}</title>
+    {% stylesheets
+    'css/materialize.min.css'
+    'css/main.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<nav>
+    <div class="nav-wrapper  z-depth-1">
+        <a href="#" class="brand-logo">Ping</a>
+    </div>
+</nav>
+<body>
 
-        {% block body %}{% endblock %}
-        {% javascripts
-        'js/jquery.min.js'
-        'js/materialize.js'
-        %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-        {% block javascripts %}
+{% block body %}{% endblock %}
+{% javascripts
+'js/jquery.min.js'
+'js/materialize.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% block javascripts %}
 
-        {% endblock %}
-    </body>
+{% endblock %}
+</body>
 </html>

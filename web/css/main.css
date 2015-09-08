@@ -5,14 +5,42 @@
     margin-left:50%;
     position: relative;
     left: -600px;
+    top: -55px;
+    z-index: 5;
+    border-top: none;
 }
 #add_event_button
 {
     text-align:center;
     position: relative;
-    bottom: -27px;
+    top: -27px;
+    z-index: 10;
 }
 .nav-wrapper
 {
-    padding-left: 10px;
+    text-align:center;
+    background-color: rgb(150,101,177);
+}
+
+.nav-wrapper a
+{
+    width: 1200px;
+    position:relative;
+}
+header #content
+{
+    width:1200px;
+    margin: auto;
+    border: 1px solid #e0e0e0;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.3em;
+    z-index: 7;
+}
+
+.event_info
+{
+    margin:auto;
+    border: 1px solid grey;
+    width: 500px;
+    height:300px;
 }
