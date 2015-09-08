@@ -22,6 +22,10 @@
             <tag name="form.type" alias="event" />
         </service>
 
+        <service id="akeneo_api.form.type.user" class="Akeneo\Bundle\ApiBundle\Form\Type\UserType">
+            <tag name="form.type" alias="user" />
+        </service>
+
         <service id="akeneo_api.form.type.place" class="Akeneo\Bundle\ApiBundle\Form\Type\PlaceType">
             <tag name="form.type" alias="place" />
         </service>

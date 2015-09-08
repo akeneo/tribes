@@ -7,13 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class EventType.
+ * Class UserType.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class EventType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -21,14 +21,8 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('link')
-            ->add('place', 'place')
-            ->add('plannedAt', 'datetime', ['widget' => 'single_text'])
-            ->add('user', 'user')
-            ->add('tags', 'collection', [
-                'allow_add' => true,
-                'allow_delete' => true
-            ]);
+            ->add('name')
+            ->add('email');
     }
 
     /**
@@ -37,7 +31,7 @@ class EventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Event',
+            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\User',
             'cascade_validation' => true,
             'csrf_protection' => false,
         ]);
@@ -48,6 +42,6 @@ class EventType extends AbstractType
      */
     public function getName()
     {
-        return 'event';
+        return 'user';
     }
 }
