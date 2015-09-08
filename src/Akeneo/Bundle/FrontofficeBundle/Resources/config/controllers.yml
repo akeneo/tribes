@@ -1,0 +1,6 @@
+services:
+    akeneo_frontoffice.controller.homepage:
+        class: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
+        arguments:
+            - '@form.factory'
+            - '@akeneo_frontoffice.factory.ping_api_client'
