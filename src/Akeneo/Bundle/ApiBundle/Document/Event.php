@@ -3,6 +3,7 @@
 namespace Akeneo\Bundle\ApiBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 /**
  * @MongoDB\Document
@@ -22,6 +23,17 @@ class Event
      * @MongoDB\String
      */
     private $link;
+
+    /**
+     * Event constructor.
+     *
+     * @param $link
+     */
+    public function __construct($link)
+    {
+        $this->link = $link;
+    }
+
 
     /**
      * @return string

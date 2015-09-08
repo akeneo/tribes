@@ -4,6 +4,6 @@ akeneo_frontoffice:
     prefix:   /
 
 akeneo_api_event:
-    resource: Akeneo\Bundle\ApiBundle\Controller\EventController
+    resource: akeneo_api.controller.event
     type:     rest
     prefix:   /api/
