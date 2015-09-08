@@ -1,1 +1,30 @@
-Salut !
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div id="add_event_button">
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">+</i></a>
+    </div>
+    <div id="map" class="z-depth-1"></div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 47.218505, lng: -1.544658},
+                zoom: 8
+            });
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}&callback=initMap">
+    </script>
+{% endblock %}
+
+
+{% block add_event %}
+{% endblock %}
