@@ -15,15 +15,14 @@
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/mongodb-odm-bundle": "^3.0",
-        "friendsofsymfony/rest-bundle": "^1.7"
+        "friendsofsymfony/rest-bundle": "^1.7",
+        "doctrine/doctrine-fixtures-bundle": "^2.2"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "phpspec/phpspec": "^2.3",
+        "fabpot/php-cs-fixer": "^1.10"
     },
     "scripts": {
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
-        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

@@ -54,3 +54,14 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+
+fos_rest:
+    view:
+        view_response_listener:
+            enabled:              true
+
+    routing_loader:
+        default_format: json
+
+    exception:
+        enabled: true
