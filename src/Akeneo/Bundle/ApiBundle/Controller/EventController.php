@@ -75,7 +75,7 @@ class EventController implements ClassResourceInterface
     public function postAction(Request $request)
     {
         $form = $this->formFactory->create('event');
-        $form->handleRequest($request);
+        $form->submit($request->request->all());
 
         if (!$form->isValid()) {
 

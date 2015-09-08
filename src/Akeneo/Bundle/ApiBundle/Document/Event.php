@@ -29,7 +29,7 @@ class Event
     /**
      * @var Place
      *
-     * @Assert\Valid
+     * @Assert\NotNull
      * @MongoDB\EmbedOne(targetDocument="Place")
      */
     private $place;
@@ -54,7 +54,7 @@ class Event
      * @param \DateTime $plannedAt
      * @param string    $link
      */
-    public function __construct(Place $place, \DateTime $plannedAt, $link = null)
+    public function __construct(Place $place = null, \DateTime $plannedAt = null, $link = null)
     {
         $this->place     = $place;
         $this->plannedAt = $plannedAt;

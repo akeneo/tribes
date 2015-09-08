@@ -20,7 +20,10 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('link');
+        $builder
+            ->add('link')
+            ->add('place')
+            ->add('plannedAt');
     }
 
     /**
@@ -29,7 +32,9 @@ class EventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'class' => 'Akeneo\Bundle\ApiBundle\Document\Event'
+            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Event',
+            'cascade_validation' => true,
+            'csrf_protection' => false
         ]);
     }
 

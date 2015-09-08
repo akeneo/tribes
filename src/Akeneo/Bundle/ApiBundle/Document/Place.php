@@ -21,7 +21,7 @@ class Place
     /**
      * @var Location
      *
-     * @Assert\Valid
+     * @Assert\NotNull
      * @MongoDB\EmbedOne(targetDocument="Location")
      */
     private $location;
