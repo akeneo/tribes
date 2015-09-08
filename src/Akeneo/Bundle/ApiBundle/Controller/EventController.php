@@ -5,6 +5,7 @@ namespace Akeneo\Bundle\ApiBundle\Controller;
 use Akeneo\Bundle\ApiBundle\Document\Event;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -54,12 +55,21 @@ class EventController implements ClassResourceInterface
 
     /**
      * @Rest\View
+     * @Rest\QueryParam(name="longitude", default=null, nullable=true)
+     * @Rest\QueryParam(name="latitude", default=null, nullable=true)
+     * @Rest\QueryParam(name="from", default="now", nullable=true)
+     * @Rest\QueryParam(name="to", default=null, nullable=true)
      *
      * @return array
      */
-    public function cgetAction()
+    public function cgetAction(ParamFetcher $paramFetcher)
     {
-        return $this->repository->findAll();
+        return $this->repository->findAllNear(
+            $paramFetcher->get('latitude'),
+            $paramFetcher->get('longitude'),
+            $paramFetcher->get('from'),
+            $paramFetcher->get('to')
+        );
     }
 
     /**
