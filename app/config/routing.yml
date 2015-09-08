@@ -1,7 +1,6 @@
 akeneo_frontoffice:
-    resource: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
-    type:     annotation
-    prefix:   /
+    resource: @AkeneoFrontofficeBundle/Controller
+    type: annotation
 
 akeneo_api_event:
     resource: akeneo_api.controller.event
