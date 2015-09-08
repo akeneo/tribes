@@ -1,9 +1,9 @@
 akeneo_frontoffice:
-    resource: "@AkeneoFrontofficeBundle/Resources/config/routing.xml"
-    type:     rest
+    resource: Akeneo\Bundle\FrontofficeBundle\Controller\DefaultController
+    type:     annotation
     prefix:   /
 
-akeneo_api:
-    resource: "@AkeneoApiBundle/Resources/config/routing.xml"
-    type:     annotation
+akeneo_api_event:
+    resource: Akeneo\Bundle\ApiBundle\Controller\EventController
+    type:     rest
     prefix:   /api/
