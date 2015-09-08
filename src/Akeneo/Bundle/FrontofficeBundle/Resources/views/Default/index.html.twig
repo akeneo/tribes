@@ -14,12 +14,43 @@
         </div>
     </header>
     <div id="add_event_button">
-        <a class="btn-floating btn-large waves-effect waves-light red z-depth-2 tooltipped" data-position="right" data-delay="50" data-tooltip="Add your event!"><i class="material-icons" style="font-style: normal;">+</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red z-depth-2 tooltipped" data-position="right"
+           data-delay="50" data-tooltip="Add your event!"><i class="material-icons"
+                                                             style="font-style: normal;">+</i></a>
     </div>
     <div id="map" class="z-depth-1"></div>
 
-    <div class="event_info">
+    <div style="display:none">
+        <div id="event_wrapper" class="row z-depth-2">
+            <div class="col s3">
+                <div class="card event_info">
+                    <div class="card-content white-text">
+                        <img src="{{ gravatar_url('remy.betus@gmail.com') }}"/>
 
+                        <div id="name">Rémy Bétus - <strong>Akeneo</strong></div>
+
+                        <div id="email">
+                            <a href="mailto:remy.betus@gmail.com">remy.betus@gmail.com</a>
+                        </div>
+                        <div id="location">
+                            Le lieux unique, Nantes, France
+                        </div>
+                        <br/>
+
+                        <div id="purpose">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore.
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">PHP</a>
+                        <a href="#">Symfony2</a>
+                        <a href="#">Potatoes</a>
+                        <a href="#">Safety</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -27,11 +58,45 @@
     <script type="text/javascript">
 
         var map;
+
+        var contentString = $('#event_wrapper').html();
+
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 47.218505, lng: -1.544658},
-                zoom: 8
+            var myLatLng = {lat: 47.218505, lng: -1.544658};
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
             });
+
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: myLatLng
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                var iwOuter = $('.gm-style-iw');
+                var iwBackground = iwOuter.prev();
+                iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+                iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+                var iwCloseBtn = iwOuter.next();
+
+                    iwCloseBtn.css({
+                    right: '65px', top: '30px', // button repositioning
+                    'border-radius': '13px', // circular effect
+                });
+                iwCloseBtn.mouseout(function(){
+                    $(this).css({opacity: '1'});
+                });
+
+            });
+
+
         }
 
     </script>

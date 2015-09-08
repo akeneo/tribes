@@ -1,35 +1,33 @@
-#map
-{
+#map {
     height: 600px;
     width: 1200px;
-    margin-left:50%;
+    margin-left: 50%;
     position: relative;
     left: -600px;
     top: -55px;
     z-index: 5;
     border-top: none;
 }
-#add_event_button
-{
-    text-align:center;
+
+#add_event_button {
+    text-align: center;
     position: relative;
     top: -27px;
     z-index: 10;
 }
-.nav-wrapper
-{
-    text-align:center;
-    background-color: rgb(150,101,177);
+
+.nav-wrapper {
+    text-align: center;
+    background-color: rgb(150, 101, 177);
 }
 
-.nav-wrapper a
-{
+.nav-wrapper a {
     width: 1200px;
-    position:relative;
+    position: relative;
 }
-header #content
-{
-    width:1200px;
+
+header #content {
+    width: 1200px;
     margin: auto;
     border: 1px solid #e0e0e0;
     font-family: "Roboto", sans-serif;
@@ -37,10 +35,44 @@ header #content
     z-index: 7;
 }
 
-.event_info
+.event_info {
+    margin: auto;
+}
+
+.event_info img
 {
-    margin:auto;
-    border: 1px solid grey;
-    width: 500px;
-    height:300px;
+    float:left;
+    padding-right:20px;
+}
+
+.event_info ul#tags li {
+    display: inline;
+}
+
+.event_info ul#tags li.tag {
+    padding: 5px;
+}
+
+.event_info #name
+{
+    font-variant: small-caps;
+}
+
+.card.event_info
+{
+    background-color: #11324d;
+    border:2px solid #11324d;
+}
+.gm-style-iw {
+    width: 350px !important;
+    top: 15px !important;
+    left: 0 !important;
+    background-color:  #11324d;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    border-radius: 2px 2px 0 0;
+}
+
+.event_info a.card-action
+{
+    color: #f8b43f;
 }
