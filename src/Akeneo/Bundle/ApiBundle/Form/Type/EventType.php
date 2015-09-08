@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class EventType
+ * Class EventType.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
@@ -36,7 +36,7 @@ class EventType extends AbstractType
         $resolver->setDefaults([
             'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Event',
             'cascade_validation' => true,
-            'csrf_protection' => false
+            'csrf_protection' => false,
         ]);
     }
 

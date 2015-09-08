@@ -34,7 +34,7 @@ class Location
      */
     public function __construct($latitude = null, $longitude = null)
     {
-        $this->latitude  = $latitude;
+        $this->latitude = $latitude;
         $this->longitude = $longitude;
     }
 

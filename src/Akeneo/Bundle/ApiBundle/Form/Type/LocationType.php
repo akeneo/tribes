@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class LocationType
+ * Class LocationType.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
@@ -33,7 +33,7 @@ class LocationType extends AbstractType
         $resolver->setDefaults([
             'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Location',
             'cascade_validation' => true,
-            'csrf_protection' => false
+            'csrf_protection' => false,
         ]);
     }
 

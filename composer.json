@@ -19,7 +19,8 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2"
     },
     "require-dev": {
-        "phpspec/phpspec": "^2.3"
+        "phpspec/phpspec": "^2.3",
+        "fabpot/php-cs-fixer": "^1.10"
     },
     "scripts": {
         "post-install-cmd": [

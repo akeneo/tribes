@@ -30,12 +30,12 @@ class Place
      * Place constructor.
      *
      * @param Location $location
-     * @param string $name
+     * @param string   $name
      */
     public function __construct(Location $location = null, $name = null)
     {
         $this->location = $location;
-        $this->name     = $name;
+        $this->name = $name;
     }
 
     /**

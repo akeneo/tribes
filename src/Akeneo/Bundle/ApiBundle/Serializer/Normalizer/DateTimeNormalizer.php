@@ -5,7 +5,7 @@ namespace Akeneo\Bundle\ApiBundle\Serializer\Normalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Class DateTimeNormalizer
+ * Class DateTimeNormalizer.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)

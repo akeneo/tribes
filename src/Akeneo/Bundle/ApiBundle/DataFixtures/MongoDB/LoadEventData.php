@@ -11,7 +11,7 @@ use Akeneo\Bundle\ApiBundle\Document\Event;
 class LoadEventData implements FixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {

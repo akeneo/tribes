@@ -4,7 +4,6 @@ namespace Akeneo\Bundle\ApiBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\Document(collection="event")
@@ -56,9 +55,9 @@ class Event
      */
     public function __construct(Place $place = null, \DateTime $plannedAt = null, $link = null)
     {
-        $this->place     = $place;
+        $this->place = $place;
         $this->plannedAt = $plannedAt;
-        $this->link      = $link;
+        $this->link = $link;
         $this->createdAt = new \DateTime();
     }
 
