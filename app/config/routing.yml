@@ -1,5 +1,5 @@
 akeneo_frontoffice:
-    resource: Akeneo\Bundle\FrontofficeBundle\Controller\DefaultController
+    resource: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
     type:     annotation
     prefix:   /
 

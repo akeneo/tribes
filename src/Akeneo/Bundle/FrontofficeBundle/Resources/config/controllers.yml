@@ -1,0 +1,6 @@
+parameters:
+    akeneo.ping.controller.homepage.class: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
+
+services:
+    akeneo.ping.controller.homepage:
+        class: %akeneo.ping.controller.homepage.class%
