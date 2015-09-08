@@ -2,12 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Ping{% endblock %}</title>
+        {% stylesheets
+        'css/materialize.min.css'
+        'css/main.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+    <nav>
+        <div class="nav-wrapper deep-purple darken-3">
+            <a href="#" class="brand-logo">Ping</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
     <body>
+
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% javascripts
+        'js/jquery.min.js'
+        'js/materialize.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>
