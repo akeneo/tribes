@@ -32,7 +32,7 @@ class Location
      * @param float $latitude
      * @param float $longitude
      */
-    public function __construct($latitude, $longitude)
+    public function __construct($latitude = null, $longitude = null)
     {
         $this->latitude  = $latitude;
         $this->longitude = $longitude;

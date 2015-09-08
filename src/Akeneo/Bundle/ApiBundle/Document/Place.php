@@ -32,7 +32,7 @@ class Place
      * @param Location $location
      * @param string $name
      */
-    public function __construct(Location $location, $name)
+    public function __construct(Location $location = null, $name = null)
     {
         $this->location = $location;
         $this->name     = $name;
