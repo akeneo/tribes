@@ -34,6 +34,22 @@ class Event
     private $place;
 
     /**
+     * @var User
+     *
+     * @Assert\NotNull
+     * @MongoDB\EmbedOne(targetDocument="User")
+     */
+    private $user;
+
+    /**
+     * @var array
+     *
+     * @Assert\NotNull
+     * @MongoDB\Collection
+     */
+    private $tags = [];
+
+    /**
      * @var \DateTime
      *
      * @Assert\NotNull
@@ -51,12 +67,16 @@ class Event
     /**
      * @param Place     $place
      * @param \DateTime $plannedAt
+     * @param User      $user
+     * @param array     $tags
      * @param string    $link
      */
-    public function __construct(Place $place = null, \DateTime $plannedAt = null, $link = null)
+    public function __construct(Place $place = null, \DateTime $plannedAt = null, User $user = null, array $tags = [], $link = null)
     {
         $this->place = $place;
         $this->plannedAt = $plannedAt;
+        $this->user = $user;
+        $this->tags = $tags;
         $this->link = $link;
         $this->createdAt = new \DateTime();
     }
@@ -139,5 +159,37 @@ class Event
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param array $tags
+     */
+    public function setTags(array $tags = [])
+    {
+        $this->tags = $tags;
     }
 }
