@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,8 +39,9 @@ class EventControllerSpec extends ObjectBehavior
 
     function it_should_respond_to_post_action($formFactory, $manager, Request $request, FormInterface $form)
     {
+        $request->request = new ParameterBag();
         $formFactory->create('event')->willReturn($form);
-        $form->handleRequest($request)->shouldBeCalled();
+        $form->submit([])->shouldBeCalled();
         $form->isValid()->willReturn(true);
         $form->getData()->willReturn('foobar');
         $manager->persist('foobar')->shouldBeCalled();
