@@ -17,6 +17,10 @@
             <tag name="form.type" alias="event" />
         </service>
 
+        <service id="akeneo_api.serializer.normalizer.datetime" class="Akeneo\Bundle\ApiBundle\Serializer\Normalizer\DateTimeNormalizer">
+            <tag name="serializer.normalizer" />
+        </service>
+
         <service id="akeneo_api.controller.event" class="Akeneo\Bundle\ApiBundle\Controller\EventController">
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
             <argument type="service" id="akeneo_api.repository.event" />
