@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^2.3",
+        "henrikbjorn/phpspec-code-coverage": "~1.0.1",
         "fabpot/php-cs-fixer": "^1.10"
     },
     "scripts": {
