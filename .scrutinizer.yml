@@ -40,6 +40,8 @@ tools:
             - spec/
             - web/
 build:
+  environment:
+    php: '5.5.25'
   tests:
     override:
       -
