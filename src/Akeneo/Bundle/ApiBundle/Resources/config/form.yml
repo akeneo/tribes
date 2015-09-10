@@ -1,0 +1,21 @@
+services:
+    akeneo_api.form.type.event:
+        class: Akeneo\Bundle\ApiBundle\Form\Type\EventType
+        tags:
+            - {name: form.type, alias: event}
+    akeneo_api.form.type.user:
+        class: Akeneo\Bundle\ApiBundle\Form\Type\UserType
+        tags:
+            - {name: form.type, alias: user}
+    akeneo_api.form.type.place:
+        class: Akeneo\Bundle\ApiBundle\Form\Type\PlaceType
+        tags:
+            - {name: form.type, alias: place}
+    akeneo_api.form.type.location:
+        class: Akeneo\Bundle\ApiBundle\Form\Type\LocationType
+        tags:
+            - {name: form.type, alias: location}
+    akeneo_api.form.type.subscriber:
+        class: Akeneo\Bundle\ApiBundle\Form\Type\SubscriberType
+        tags:
+            - {name: form.type, alias: subscriber}

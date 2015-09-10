@@ -2,10 +2,9 @@
 
 namespace Akeneo\Bundle\ApiBundle\Controller;
 
-use Akeneo\Bundle\ApiBundle\Document\Event;
-use Akeneo\Bundle\ApiBundle\Repository\EventRepository;
+use Akeneo\Bundle\ApiBundle\Document\Subscriber;
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\RestBundle\Request\ParamFetcher;
+use Doctrine\ODM\MongoDB\DocumentRepository;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -13,13 +12,13 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class EventController.
+ * Class SubscriberController.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class EventController implements ClassResourceInterface
+class SubscriberController implements ClassResourceInterface
 {
     /**
      * @var ObjectManager
@@ -27,7 +26,7 @@ class EventController implements ClassResourceInterface
     private $manager;
 
     /**
-     * @var EventRepository
+     * @var DocumentRepository
      */
     private $repository;
 
@@ -37,15 +36,15 @@ class EventController implements ClassResourceInterface
     private $formFactory;
 
     /**
-     * EventController constructor.
+     * SubscriberController constructor.
      *
      * @param ObjectManager        $manager
-     * @param EventRepository      $repository
+     * @param DocumentRepository   $repository
      * @param FormFactoryInterface $formFactory
      */
     public function __construct(
         ObjectManager $manager,
-        EventRepository $repository,
+        DocumentRepository $repository,
         FormFactoryInterface $formFactory
     ) {
         $this->manager = $manager;
@@ -55,29 +54,20 @@ class EventController implements ClassResourceInterface
 
     /**
      * @Rest\View
-     * @Rest\QueryParam(name="longitude", default=null, nullable=true)
-     * @Rest\QueryParam(name="latitude", default=null, nullable=true)
-     * @Rest\QueryParam(name="from", default="now", nullable=true)
-     * @Rest\QueryParam(name="to", default=null, nullable=true)
      *
      * @return array
      */
-    public function cgetAction(ParamFetcher $paramFetcher)
+    public function cgetAction()
     {
-        return $this->repository->findAllNear(
-            $paramFetcher->get('latitude'),
-            $paramFetcher->get('longitude'),
-            $paramFetcher->get('from'),
-            $paramFetcher->get('to')
-        );
+        return $this->repository->findAll();
     }
 
     /**
      * @Rest\View
      */
-    public function getAction(Event $event)
+    public function getAction(Subscriber $subscriber)
     {
-        return $event;
+        return $subscriber;
     }
 
     /**
@@ -85,26 +75,26 @@ class EventController implements ClassResourceInterface
      */
     public function postAction(Request $request)
     {
-        $form = $this->formFactory->create('event');
+        $form = $this->formFactory->create('subscriber');
         $form->submit($request->request->all());
 
         if (!$form->isValid()) {
             return View::create($form, 400);
         }
 
-        $event = $form->getData();
-        $this->manager->persist($event);
+        $subscriber = $form->getData();
+        $this->manager->persist($subscriber);
         $this->manager->flush();
 
-        return $event;
+        return $subscriber;
     }
 
     /**
      * @Rest\View
      */
-    public function deleteAction(Event $event)
+    public function deleteAction(Subscriber $subscriber)
     {
-        $this->manager->remove($event);
+        $this->manager->remove($subscriber);
         $this->manager->flush();
     }
 }

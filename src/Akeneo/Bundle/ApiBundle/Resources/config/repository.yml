@@ -1,0 +1,14 @@
+services:
+    akeneo_api.repository.event:
+        class: Doctrine\ODM\MongoDB\DocumentRepository
+        factory_service: doctrine.odm.mongodb.document_manager
+        factory_method: getRepository
+        arguments:
+            - Akeneo\Bundle\ApiBundle\Document\Event
+
+    akeneo_api.repository.subscriber:
+        class: Doctrine\ODM\MongoDB\DocumentRepository
+        factory_service: doctrine.odm.mongodb.document_manager
+        factory_method: getRepository
+        arguments:
+            - Akeneo\Bundle\ApiBundle\Document\Subscriber
