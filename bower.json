@@ -1,0 +1,20 @@
+{
+  "name": "ping",
+  "version": "0.0.0",
+  "homepage": "https://github.com/akeneo/ping",
+  "authors": [
+    "Akeneo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#~0.97.0"
+  }
+}
