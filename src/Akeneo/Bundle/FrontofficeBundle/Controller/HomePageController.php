@@ -2,7 +2,6 @@
 
 namespace Akeneo\Bundle\FrontofficeBundle\Controller;
 
-use Akeneo\Bundle\FrontofficeBundle\Factory\PingApiClientFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,17 +23,12 @@ class HomePageController extends Controller
     /** @var FormFactoryInterface */
     protected $formFactory;
 
-    /** @var PingApiClientFactory */
-    protected $clientFactory;
-
     /**
      * @param FormFactoryInterface $formFactory
-     * @param PingApiClientFactory $clientFactory
      */
-    public function __construct(FormFactoryInterface $formFactory, PingApiClientFactory $clientFactory)
+    public function __construct(FormFactoryInterface $formFactory)
     {
-        $this->formFactory   = $formFactory;
-        $this->clientFactory = $clientFactory;
+        $this->formFactory = $formFactory;
     }
 
     /**
