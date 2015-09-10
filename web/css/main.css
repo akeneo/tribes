@@ -91,3 +91,6 @@ header #content {
 .infobox .content {
     margin: 15px;
 }
+#event_template{
+    display: none;
+}
