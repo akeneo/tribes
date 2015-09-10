@@ -1,0 +1,12 @@
+services:
+    sensio.request.param_converter.doctrine.mongodb:
+        class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter
+        arguments:
+            - @doctrine_mongodb
+        tags:
+            - {name: request.param_converter, converter: doctrine.odm}
+
+    akeneo_api.serializer.normalizer.datetime:
+        class: Akeneo\Bundle\ApiBundle\Serializer\Normalizer\DateTimeNormalizer
+        tags:
+            - {name: serializer.normalizer}

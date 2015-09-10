@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @MongoDB\Document(collection="event")
+ * @MongoDB\Document(collection="event", repositoryClass="Akeneo\Bundle\ApiBundle\Repository\EventRepository")
  */
 class Event
 {
@@ -46,6 +46,7 @@ class Event
      *
      * @Assert\NotNull
      * @MongoDB\Collection
+     * @MongoDB\Index
      */
     private $tags = [];
 
@@ -61,6 +62,7 @@ class Event
      * @var \DateTime
      *
      * @MongoDB\Date
+     * @MongoDB\Index(order="desc")
      */
     private $createdAt;
 

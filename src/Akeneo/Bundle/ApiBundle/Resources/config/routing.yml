@@ -1,0 +1,7 @@
+akeneo_api_event:
+    resource: akeneo_api.controller.event
+    type:     rest
+
+akeneo_api_subscriber:
+    resource: akeneo_api.controller.subscriber
+    type:     rest

@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @MongoDB\EmbeddedDocument
+ * @MongoDB\Index(keys={"location"="2d"})
  */
 class Place
 {
@@ -27,8 +28,6 @@ class Place
     private $location;
 
     /**
-     * Place constructor.
-     *
      * @param Location $location
      * @param string   $name
      */

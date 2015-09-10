@@ -7,13 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserType.
+ * Class SubscriberType.
  *
  * @author    Clement Gautier <clement.gautier@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class UserType extends AbstractType
+class SubscriberType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('location', 'location')
             ->add('email');
     }
 
@@ -31,7 +31,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'         => 'Akeneo\Bundle\ApiBundle\Document\User',
+            'data_class'         => 'Akeneo\Bundle\ApiBundle\Document\Subscriber',
             'cascade_validation' => true,
             'csrf_protection'    => false,
         ]);
@@ -42,6 +42,6 @@ class UserType extends AbstractType
      */
     public function getName()
     {
-        return 'user';
+        return 'subscriber';
     }
 }

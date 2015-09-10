@@ -14,12 +14,16 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "doctrine/mongodb-odm-bundle": "^3.0",
+        "doctrine/mongodb-odm": "1.0.*@dev",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev",
         "friendsofsymfony/rest-bundle": "^1.7",
-        "doctrine/doctrine-fixtures-bundle": "^2.2"
+        "doctrine/doctrine-fixtures-bundle": "^2.2",
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/swiftmailer-bundle": "^2.3"
     },
     "require-dev": {
         "phpspec/phpspec": "^2.3",
+        "henrikbjorn/phpspec-code-coverage": "~1.0.1",
         "fabpot/php-cs-fixer": "^1.10"
     },
     "scripts": {

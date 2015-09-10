@@ -1,0 +1,5 @@
+services:
+    akeneo_frontoffice.factory.ping_api_client:
+        class: Akeneo\Bundle\FrontofficeBundle\Factory\PingApiClientFactory
+        arguments:
+            - '@router'

@@ -45,6 +45,13 @@ assetic:
     filters:
         cssrewrite: ~
 
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
 doctrine_mongodb:
     connections:
         default:
@@ -56,6 +63,8 @@ doctrine_mongodb:
             auto_mapping: true
 
 fos_rest:
+    param_fetcher_listener: true
+
     view:
         view_response_listener:
             enabled:              true

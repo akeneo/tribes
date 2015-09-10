@@ -3,8 +3,9 @@
 namespace spec\Akeneo\Bundle\ApiBundle\Controller;
 
 use Akeneo\Bundle\ApiBundle\Document\Event;
+use Akeneo\Bundle\ApiBundle\Repository\EventRepository;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ODM\MongoDB\DocumentRepository;
+use FOS\RestBundle\Request\ParamFetcher;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
@@ -12,24 +13,23 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Class EventControllerSpec
- *
- * @author    Clement Gautier <clement.gautier@akeneo.com>
- * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
 class EventControllerSpec extends ObjectBehavior
 {
-    function let(ObjectManager $manager, DocumentRepository $repository, FormFactoryInterface $formFactory)
+    function let(ObjectManager $manager, EventRepository $repository, FormFactoryInterface $formFactory)
     {
         $this->beConstructedWith($manager, $repository, $formFactory);
     }
 
-    function it_should_respond_to_cget_action($repository)
+    function it_should_respond_to_cget_action(ParamFetcher $paramFetcher, $repository)
     {
-        $repository->findAll()->willReturn(['foo', 'bar']);
-        $this->cgetAction()->shouldReturn(['foo', 'bar']);
+        $paramFetcher->get('latitude')->willReturn('foo-latitude');
+        $paramFetcher->get('longitude')->willReturn('foo-longitude');
+        $paramFetcher->get('from')->willReturn('foo-from');
+        $paramFetcher->get('to')->willReturn('foo-to');
+
+        $repository->findAllNear('foo-latitude', 'foo-longitude', 'foo-from', 'foo-to')->willReturn(['foo', 'bar']);
+
+        $this->cgetAction($paramFetcher)->shouldReturn(['foo', 'bar']);
     }
 
     function it_should_respond_to_get_action(Event $event)

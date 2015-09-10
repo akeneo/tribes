@@ -1,0 +1,14 @@
+services:
+    akeneo_api.controller.event:
+        class: Akeneo\Bundle\ApiBundle\Controller\EventController
+        arguments:
+            - @doctrine.odm.mongodb.document_manager
+            - @akeneo_api.repository.event
+            - @form.factory
+
+    akeneo_api.controller.subscriber:
+        class: Akeneo\Bundle\ApiBundle\Controller\SubscriberController
+        arguments:
+            - @doctrine.odm.mongodb.document_manager
+            - @akeneo_api.repository.subscriber
+            - @form.factory

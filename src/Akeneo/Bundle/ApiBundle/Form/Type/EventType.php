@@ -37,9 +37,9 @@ class EventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Event',
+            'data_class'         => 'Akeneo\Bundle\ApiBundle\Document\Event',
             'cascade_validation' => true,
-            'csrf_protection' => false,
+            'csrf_protection'    => false,
         ]);
     }
 

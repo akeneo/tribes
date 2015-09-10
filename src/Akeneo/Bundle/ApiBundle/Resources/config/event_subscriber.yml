@@ -1,0 +1,9 @@
+services:
+    akeneo_api.event_subscriber.doctrine.send_subscriber_email:
+        class:  Akeneo\Bundle\ApiBundle\EventSubscriber\Doctrine\SendSubscriberEmailSubscriber
+        arguments:
+            - @akeneo_api.repository.subscriber
+            - @mailer
+            - @templating
+        tags:
+            -  { name: doctrine_mongodb.odm.event_subscriber }
