@@ -1,6 +1,8 @@
 extensions:
   - PhpSpec\Extension\CodeCoverageExtension
 code_coverage:
+  blacklist:
+    - src/Akeneo/Bundle/ApiBundle/DataFixtures
   whitelist:
     - src/
   format:
