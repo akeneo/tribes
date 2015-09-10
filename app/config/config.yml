@@ -43,7 +43,8 @@ twig:
         google_map_api_key: AIzaSyBITmQHpnrjkl8CQOjd8x9JqgATOUESxEU
     form:
         resources:
-            - 'AkeneoFrontofficeBundle:Form:fields.html.twig'
+            - bootstrap_3_layout.html.twig
+            - AkeneoFrontofficeBundle:Form:fields.html.twig
 
 # Assetic Configuration
 assetic:

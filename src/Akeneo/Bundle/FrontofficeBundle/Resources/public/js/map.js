@@ -6,7 +6,6 @@
  * offsetVertical, offsetHorizontal, className, height, width
  */
 
-
 function InfoBox(opts) {
     google.maps.OverlayView.call(this);
     this.latlng_ = opts.latlng;
@@ -157,7 +156,8 @@ function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: {lat: 47.218505, lng: -1.544658}
+        center: {lat: 47.218505, lng: -1.544658},
+        scrollwheel: false
     });
 
     $.getJSON('/app_dev.php/api/events')
@@ -192,3 +192,10 @@ function initMap() {
             });
         });
 }
+
+google.maps.event.addDomListener(window, 'load', initMap);
+
+$("#create_event_btn").click(function(event) {
+    event.preventDefault();
+    $(window).scrollTo($("#add_event_form"), 1000);
+});

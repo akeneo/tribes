@@ -15,8 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "Materialize": "materialize#~0.97.0",
     "blueimp-md5": "JavaScript-MD5#~1.1.1",
+    "bootstrap": "~3.3.5",
+    "jquery.scrollTo": "~2.1.1",
     "mustache.js": "mustache#~2.1.3"
   }
 }
