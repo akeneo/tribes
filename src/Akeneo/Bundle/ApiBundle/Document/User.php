@@ -28,8 +28,6 @@ class User
     private $email;
 
     /**
-     * User constructor.
-     *
      * @param string $name
      * @param string $email
      */

@@ -13,13 +13,6 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Class EventControllerSpec
- *
- * @author    Clement Gautier <clement.gautier@akeneo.com>
- * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
 class EventControllerSpec extends ObjectBehavior
 {
     function let(ObjectManager $manager, EventRepository $repository, FormFactoryInterface $formFactory)

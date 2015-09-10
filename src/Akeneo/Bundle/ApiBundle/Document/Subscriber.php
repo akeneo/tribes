@@ -34,8 +34,6 @@ class Subscriber
     private $email;
 
     /**
-     * Subscriber constructor.
-     *
      * @param Location $location
      * @param string   $email
      */

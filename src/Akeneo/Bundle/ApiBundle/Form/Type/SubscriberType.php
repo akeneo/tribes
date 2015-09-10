@@ -31,9 +31,9 @@ class SubscriberType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Subscriber',
+            'data_class'         => 'Akeneo\Bundle\ApiBundle\Document\Subscriber',
             'cascade_validation' => true,
-            'csrf_protection' => false,
+            'csrf_protection'    => false,
         ]);
     }
 

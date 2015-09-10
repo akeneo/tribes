@@ -28,8 +28,6 @@ class Place
     private $location;
 
     /**
-     * Place constructor.
-     *
      * @param Location $location
      * @param string   $name
      */

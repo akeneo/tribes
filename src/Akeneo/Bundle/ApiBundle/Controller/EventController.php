@@ -21,24 +21,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class EventController implements ClassResourceInterface
 {
-    /**
-     * @var ObjectManager
-     */
+    /** @var ObjectManager */
     private $manager;
 
-    /**
-     * @var EventRepository
-     */
+    /** @var EventRepository */
     private $repository;
 
-    /**
-     * @var FormFactoryInterface
-     */
+    /** @var FormFactoryInterface */
     private $formFactory;
 
     /**
-     * EventController constructor.
-     *
      * @param ObjectManager        $manager
      * @param EventRepository      $repository
      * @param FormFactoryInterface $formFactory
@@ -73,7 +65,11 @@ class EventController implements ClassResourceInterface
     }
 
     /**
+     * @param Event $event
+     *
      * @Rest\View
+     *
+     * @return Event
      */
     public function getAction(Event $event)
     {
@@ -81,7 +77,11 @@ class EventController implements ClassResourceInterface
     }
 
     /**
+     * @param Request $request
+     *
      * @Rest\View
+     *
+     * @return View|Event
      */
     public function postAction(Request $request)
     {
@@ -100,6 +100,8 @@ class EventController implements ClassResourceInterface
     }
 
     /**
+     * @param Event $event
+     *
      * @Rest\View
      */
     public function deleteAction(Event $event)

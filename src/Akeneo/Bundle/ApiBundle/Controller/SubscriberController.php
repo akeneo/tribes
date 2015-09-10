@@ -20,24 +20,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SubscriberController implements ClassResourceInterface
 {
-    /**
-     * @var ObjectManager
-     */
+    /** @var ObjectManager */
     private $manager;
 
-    /**
-     * @var DocumentRepository
-     */
+    /** @var DocumentRepository */
     private $repository;
 
-    /**
-     * @var FormFactoryInterface
-     */
+    /** @var FormFactoryInterface */
     private $formFactory;
 
     /**
-     * SubscriberController constructor.
-     *
      * @param ObjectManager        $manager
      * @param DocumentRepository   $repository
      * @param FormFactoryInterface $formFactory
@@ -47,8 +39,8 @@ class SubscriberController implements ClassResourceInterface
         DocumentRepository $repository,
         FormFactoryInterface $formFactory
     ) {
-        $this->manager = $manager;
-        $this->repository = $repository;
+        $this->manager     = $manager;
+        $this->repository  = $repository;
         $this->formFactory = $formFactory;
     }
 
@@ -64,6 +56,8 @@ class SubscriberController implements ClassResourceInterface
 
     /**
      * @Rest\View
+     *
+     * @return Subscriber
      */
     public function getAction(Subscriber $subscriber)
     {
@@ -71,7 +65,11 @@ class SubscriberController implements ClassResourceInterface
     }
 
     /**
+     * @param Request $request
+     *
      * @Rest\View
+     *
+     * @return View|Subscriber
      */
     public function postAction(Request $request)
     {
@@ -90,6 +88,8 @@ class SubscriberController implements ClassResourceInterface
     }
 
     /**
+     * @param Subscriber $subscriber
+     *
      * @Rest\View
      */
     public function deleteAction(Subscriber $subscriber)
