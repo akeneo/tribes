@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Ping{% endblock %}</title>
+    <title>{% block title %}Akeneo Tribes{% endblock %}</title>
     {% stylesheets
         'assets/vendor/bootstrap/dist/css/bootstrap.css'
+        'assets/vendor/select2/dist/css/select2.css'
         'bundles/akeneofrontoffice/css/main.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -22,6 +23,7 @@
     'assets/vendor/jquery/dist/jquery.min.js'
     'assets/vendor/jquery.scrollTo/jquery.scrollTo.js'
     'assets/vendor/bootstrap/dist/js/bootstrap.js'
+    'assets/vendor/select2/dist/js/select2.js'
     'assets/vendor/mustache.js/mustache.js'
     'assets/vendor/blueimp-md5/js/md5.js'
     'bundles/akeneofrontoffice/js/main.js'
