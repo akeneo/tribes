@@ -13,16 +13,25 @@
 #create_event_btn {
     position: absolute;
     left: 50%;
-    top:207px;
+    top:225px;
     z-index: 10;
 }
 
 .btn-circle {
-     width: 30px;
-     height: 30px;
-     text-align: center;
-     padding: 6px 0;
-     font-size: 12px;
-     line-height: 1.42;
-     border-radius: 15px;
- }
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 13px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
