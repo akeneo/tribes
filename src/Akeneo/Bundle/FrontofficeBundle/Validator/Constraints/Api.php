@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraint;
 class Api extends Constraint
 {
     /** @var string */
-    public $invalidMessage = 'Not valid';
+    public $resource;
 
     /**
      * @return string

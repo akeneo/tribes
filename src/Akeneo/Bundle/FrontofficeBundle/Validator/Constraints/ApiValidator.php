@@ -3,6 +3,7 @@
 namespace Akeneo\Bundle\FrontofficeBundle\Validator\Constraints;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
@@ -32,14 +33,34 @@ class ApiValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         try {
-            $response = $this->client->request('POST', 'events', [
+            $this->client->request('POST', $constraint->resource, [
                 'json' => $value
             ]);
-            if (400 === $response->getStatusCode()) {
-                $this->context->buildViolation($constraint->invalidMessage)->addViolation();
+        } catch (ClientException $e) {
+            $content = json_decode($e->getResponse()->getBody()->getContents(), true);
+            $this->bindViolations($content['errors']);
+        }
+    }
+
+    /**
+     * Bind violations on form
+     *
+     * @param array  $errors
+     * @param string $path
+     */
+    protected function bindViolations(array $errors, $path = null)
+    {
+        foreach ($errors as $key => $error) {
+            if ('errors' !== $key && 'children' !== $key && !is_numeric($key)) {
+                null === $key ? $path = $key : $path = sprintf('[%s]', $key);
             }
-        } catch (\Exception $e) {
-            $this->context->buildViolation($e->getMessage())->addViolation();
+            if (is_array($error) && !empty($error)) {
+                $this->bindViolations($error, $path);
+            } elseif (!empty($error)) {
+                $this->context->buildViolation($error)
+                    ->atPath($path)
+                    ->addViolation();
+            }
         }
     }
 }
