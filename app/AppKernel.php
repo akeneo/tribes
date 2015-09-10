@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new Akeneo\Bundle\ApiBundle\AkeneoApiBundle(),
             new Akeneo\Bundle\FrontofficeBundle\AkeneoFrontofficeBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

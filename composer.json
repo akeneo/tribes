@@ -18,7 +18,8 @@
         "doctrine/mongodb-odm-bundle": "3.0.*@dev",
         "friendsofsymfony/rest-bundle": "^1.7",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/swiftmailer-bundle": "^2.3"
     },
     "require-dev": {
         "phpspec/phpspec": "^2.3",
