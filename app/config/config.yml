@@ -8,6 +8,10 @@ imports:
 parameters:
     locale: en
     gravatar_url: https://s.gravatar.com/avatar/
+    event_tags:
+        - pim
+        - akeneo
+        - symfony2
 
 framework:
     #esi:             ~

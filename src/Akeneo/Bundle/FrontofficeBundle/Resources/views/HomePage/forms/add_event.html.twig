@@ -1,10 +1,16 @@
-{{ form_start(form) }}
+<div class="row">
+    {{ form_start(form, {'attr':{'class':'col s6'}}) }}
     {{ form_errors(form) }}
 
     {{ form_row(form.place) }}
     {{ form_row(form.plannedAt) }}
-    {{ form_row(form.tags) }}
+
+    {{ form_label(form.tags) }}
+    {{ form_widget(form.tags) }}
+    {{ form_errors(form.tags) }}
+
     {{ form_row(form.link) }}
 
     <input type="submit" />
 {{ form_end(form) }}
+</div>

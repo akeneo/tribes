@@ -14,6 +14,14 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class AddEventType extends AbstractType
 {
+    /** @var array */
+    protected $tags;
+
+    public function __construct(array $tags)
+    {
+        $this->tags = $tags;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -22,8 +30,14 @@ class AddEventType extends AbstractType
         $builder
             ->add('link', 'url')
             ->add('place', 'text', ['required' => true])
-            ->add('plannedAt', 'date', ['empty_value' => '', 'widget' => 'single_text', 'required' => true, 'attr' => ['class' => 'datepicker']])
-            ->add('tags', 'choice', ['multiple' => true, 'required' => true]);
+            ->add('plannedAt', 'date',
+                ['widget' => 'single_text', 'required' => true, 'attr' => ['class' => 'datepicker']])
+            ->add('tags', 'choice', [
+                'choices' => $this->tags,
+                'multiple' => true,
+                'required' => true,
+                'attr' => ['class' => 'browser-default']
+            ]);
     }
 
     /**

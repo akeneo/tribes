@@ -1,5 +1,7 @@
 services:
     akeneo_frontoffice.form_types.add_event:
         class: Akeneo\Bundle\FrontofficeBundle\Form\Type\AddEventType
+        arguments:
+            - %event_tags%
         tags:
             - { name: form.type, alias: add_event }
