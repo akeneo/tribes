@@ -2,13 +2,13 @@
 
 namespace Akeneo\Bundle\FrontofficeBundle\Form\Type;
 
-use Akeneo\Bundle\FrontofficeBundle\Validator\Constraints\Event;
+use Akeneo\Bundle\FrontofficeBundle\Validator\Constraints\Api;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Event form type
+ * Add event form type
  *
  * @author    Willy Mesnage <willy.mesnage@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
@@ -42,7 +42,7 @@ class AddEventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'constraints' => new Event()
+            'constraints' => new Api()
         ]);
     }
 
