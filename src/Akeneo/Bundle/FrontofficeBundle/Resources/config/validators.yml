@@ -1,0 +1,7 @@
+services:
+    akeneo_frontoffice.validator.event:
+        class: Akeneo\Bundle\FrontofficeBundle\Validator\Constraints\EventValidator
+        arguments:
+            - '@akeneo_frontoffice.client.ping_api'
+        tags:
+            - { name: validator.constraint_validator, alias: add_event }

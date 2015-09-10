@@ -2,4 +2,4 @@ services:
     akeneo_frontoffice.client.ping_api:
         class: GuzzleHttp\Client
         arguments:
-            - {base_uri: akeneo_api_event}
+            - {base_uri: %api_base_uri%}
