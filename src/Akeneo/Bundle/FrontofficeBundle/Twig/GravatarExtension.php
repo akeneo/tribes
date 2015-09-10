@@ -2,9 +2,13 @@
 
 namespace Akeneo\Bundle\FrontofficeBundle\Twig;
 
+/**
+ * This Twig extension can be used to get corresponding Gravatar URL given
+ * an email adress.
+ */
 class GravatarExtension extends \Twig_Extension
 {
-    /** @var  string */
+    /** @var string */
     protected $gravatarUrl;
 
     /**
@@ -39,6 +43,9 @@ class GravatarExtension extends \Twig_Extension
         return $this->gravatarUrl . $hash;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'gravatar_extension';

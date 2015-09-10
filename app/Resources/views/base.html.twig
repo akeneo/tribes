@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Ping{% endblock %}</title>
     {% stylesheets
-    'css/materialize.min.css'
+    'assets/vendor/Materialize/dist/css/materialize.css'
     'css/main.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -19,14 +19,17 @@
 <body>
 
 {% block body %}{% endblock %}
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/materialize.js"></script>
 {% block javascripts %}
 
 {% endblock %}
-<script type="text/javascript" src="js/map.js"></script>
-<script type="text/javascript" src="js/md5.js"></script>
-<script type="text/javascript" src="js/gravatar.js"></script>
+{% javascripts
+    'assets/vendor/jquery/dist/jquery.min.js'
+    'assets/vendor/Materialize/dist/js/materialize.js'
+    'js/map.js'
+    'js/gravatar.js'
+    'js/md5.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 </body>
 </html>
