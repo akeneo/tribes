@@ -2,6 +2,6 @@ services:
     akeneo_frontoffice.validator.api:
         class: Akeneo\Bundle\FrontofficeBundle\Validator\Constraints\ApiValidator
         arguments:
-            - '@akeneo_frontoffice.client.ping_api'
+            - '@akeneo_frontoffice.client.api'
         tags:
             - { name: validator.constraint_validator, alias: api }
