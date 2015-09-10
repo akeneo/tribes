@@ -2,7 +2,6 @@ akeneo_frontoffice:
     resource: @AkeneoFrontofficeBundle/Controller
     type: annotation
 
-akeneo_api_event:
-    resource: akeneo_api.controller.event
-    type:     rest
+akeneo_api:
+    resource: @AkeneoApiBundle/Resources/config/routing.yml
     prefix:   /api/

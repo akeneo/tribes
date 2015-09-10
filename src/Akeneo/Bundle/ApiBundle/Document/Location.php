@@ -27,8 +27,6 @@ class Location
     private $longitude;
 
     /**
-     * Location constructor.
-     *
      * @param float $latitude
      * @param float $longitude
      */
