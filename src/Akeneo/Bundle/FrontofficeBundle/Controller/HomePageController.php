@@ -45,7 +45,7 @@ class HomePageController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $form = $this->formFactory->create('add_event');
+        $form = $this->formFactory->create('event');
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
