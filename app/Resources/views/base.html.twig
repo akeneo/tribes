@@ -5,7 +5,7 @@
     <title>{% block title %}Ping{% endblock %}</title>
     {% stylesheets
     'assets/vendor/Materialize/dist/css/materialize.css'
-    'css/main.css'
+    'bundles/akeneofrontoffice/css/main.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -25,10 +25,9 @@
 {% javascripts
     'assets/vendor/jquery/dist/jquery.min.js'
     'assets/vendor/Materialize/dist/js/materialize.js'
-    'js/map.js'
-    'js/event.js'
-    'js/gravatar.js'
-    'js/md5.js' %}
+    'assets/vendor/mustache.js/mustache.js'
+    'assets/vendor/blueimp-md5/js/md5.js'
+    'bundles/akeneofrontoffice/js/map.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 

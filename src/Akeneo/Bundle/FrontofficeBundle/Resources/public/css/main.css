@@ -47,7 +47,7 @@ header #content {
     padding-right: 20px;
 }
 
-.card-content #name {
+.card-content .name {
     font-variant: small-caps;
 }
 
@@ -97,7 +97,4 @@ header #content {
 
 .infobox .content {
     margin: 15px;
-}
-#event_template{
-    display: none;
 }

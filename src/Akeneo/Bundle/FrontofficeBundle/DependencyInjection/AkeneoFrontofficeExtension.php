@@ -23,6 +23,5 @@ class AkeneoFrontofficeExtension extends Extension
         $loader->load('controllers.yml');
         $loader->load('form_types.yml');
         $loader->load('factories.yml');
-        $loader->load('services.yml');
     }
 }
