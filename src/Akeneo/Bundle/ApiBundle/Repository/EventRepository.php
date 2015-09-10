@@ -44,6 +44,6 @@ class EventRepository extends DocumentRepository
         $qb->limit(100);
         $qb->sort('createdAt', 'desc');
 
-        return $qb->getQuery()->execute()->toArray();
+        return array_values($qb->getQuery()->execute()->toArray());
     }
 }

@@ -1,7 +1,0 @@
-services:
-    akeneo.twig.gravatar_extension:
-        class: Akeneo\Bundle\FrontofficeBundle\Twig\GravatarExtension
-        arguments:
-            - %gravatar_url%
-        tags:
-            - { name: twig.extension }

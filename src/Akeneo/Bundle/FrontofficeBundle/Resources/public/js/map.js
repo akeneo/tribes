@@ -1,5 +1,3 @@
-var contentString = document.getElementById('event_wrapper').innerHTML;
-
 /* An InfoBox is like an info window, but it displays
  * under the marker, opens quicker, and has flexible styling.
  * @param {GLatLng} latlng Point to place bar at
@@ -99,7 +97,8 @@ function initMap() {
         } else {
             // The panes have not changed, so no need to create or move the div.
         }
-    }
+    };
+
     /* Pan the map to fit the InfoBox.
      */
     InfoBox.prototype.panMap = function () {
@@ -156,56 +155,40 @@ function initMap() {
         this.boundsChangedListener_ = null;
     };
 
-
-    var centerOfTheMap = {lat: 47.218505, lng: -1.544658};
-
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: centerOfTheMap
+        center: {lat: 47.218505, lng: -1.544658}
     });
 
-    var markers = [];
-    var events = [];
-    $.ajax({
-        url: '/api/events',
-        dataType: 'json',
-        async: false,
-        success: function (data) {
-            events = data;
-        }
-    });
+    $.getJSON('/app_dev.php/api/events')
+        .then(function(data) {
+            return $.Deferred(function( defer ) {
+                $.get('/bundles/akeneofrontoffice/templates/marker.mustache')
+                    .then(function(template) {
+                        defer.resolve(template, data);
+                    }, defer.reject );
+            }).promise();
+        })
+        .then(function(template, events) {
+            events.forEach(function(event) {
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: event.place.location.latitude,
+                        lng: event.place.location.longitude
+                    },
+                    map: map,
+                    content: Mustache.render(template, $.extend(event, {
+                        "gravatar": md5(event.user.email.trim())
+                    }))
+                });
 
-    for (var i = 0; i < events.length; i++) {
-        var event = events[i];
-        var marker = new google.maps.Marker({
-            position: {lat: event.place.location.latitude, lng: event.place.location.longitude},
-            map: map,
-            content: renderInfoWindow(contentString, event)
-        });
-
-        markers.push(marker);
-
-        google.maps.event.addListener(markers[i], "click", function (e) {
-            var infoBox = new InfoBox({
-                latlng: this.getPosition(),
-                map: map,
-                content: this.content
+                google.maps.event.addListener(marker, "click", function (e) {
+                    new InfoBox({
+                        latlng: this.getPosition(),
+                        map: map,
+                        content: this.content
+                    });
+                });
             });
         });
-    }
-}
-
-function renderInfoWindow(template, event) {
-    newTemplate = template.replace('%name%', event.user.name)
-        .replace(new RegExp('%email%', 'g'), event.user.email)
-        .replace('%group%', event.user.group)
-        .replace('%location%', event.place.name.trim())
-        .replace('%gravatar%', get_gravatar(event.user.email))
-    ;
-    var tag_template = '';
-    event.tags.forEach(function (tag) {
-        tag_template += '<a href="#">' + tag + '</a> ';
-    });
-
-    return newTemplate.replace('%tags%', tag_template);
 }
