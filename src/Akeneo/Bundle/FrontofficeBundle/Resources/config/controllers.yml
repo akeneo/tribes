@@ -3,4 +3,3 @@ services:
         class: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
         arguments:
             - '@form.factory'
-            - '@akeneo_frontoffice.factory.ping_api_client'
