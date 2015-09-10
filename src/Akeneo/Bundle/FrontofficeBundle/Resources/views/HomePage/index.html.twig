@@ -1,1 +1,30 @@
-{% include "@AkeneoFrontoffice/HomePage/forms/add_event.html.twig" %}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <header class="grey lighten-2 z-depth-1">
+        <div id="content">
+            <h2>Let's meet up!</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur.
+            </p>
+        </div>
+    </header>
+    <div id="add_event_button">
+        <a class="btn-floating btn-large waves-effect waves-light red z-depth-2 tooltipped" data-position="right"
+           data-delay="50" data-tooltip="Add your event!"><i class="material-icons"
+                                                             style="font-style: normal;">+</i></a>
+    </div>
+    <div id="map" class="z-depth-1"></div>
+
+    <div id="add_event_form">
+        {% include "@AkeneoFrontoffice/HomePage/forms/add_event.html.twig" %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}&callback=initMap&sensor=false&libraries=places"></script>
+{% endblock %}

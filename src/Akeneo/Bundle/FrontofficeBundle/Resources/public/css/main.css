@@ -1,0 +1,100 @@
+#map {
+    height: 600px;
+    width: 1200px;
+    margin-left: 50%;
+    position: relative;
+    left: -600px;
+    top: -55px;
+    z-index: 5;
+    border-top: none;
+}
+
+#add_event_form {
+    width: 1200px;
+    margin-left: 50%;
+    position: relative;
+    left: -600px;
+    top: -55px;
+}
+#add_event_button {
+    text-align: center;
+    position: relative;
+    top: -27px;
+    z-index: 10;
+}
+
+.nav-wrapper {
+    text-align: center;
+    background-color: rgb(150, 101, 177);
+}
+
+.nav-wrapper a {
+    width: 1200px;
+    position: relative;
+}
+
+header #content {
+    width: 1200px;
+    margin: auto;
+    border: 1px solid #e0e0e0;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.3em;
+    z-index: 7;
+}
+
+.infobox img {
+    float: left;
+    padding-right: 20px;
+}
+
+.card-content .name {
+    font-variant: small-caps;
+}
+
+.card.event_info {
+    background-color: #11324d;
+    border: 2px solid #11324d;
+}
+
+.card-action {
+    border-top:1px solid #2F5B80;
+    clear: both;
+}
+
+.card-action a{
+    color: #f8b43f;
+    font-variant: small-caps;
+    padding-left:5px;
+    font-size:1.2em;
+}
+
+.infobox {
+    color: #F1F1F1;
+    font-family: Arial;
+    font-size:1.1em;
+    position: absolute;
+    background-color: #11324d;
+    border: 2px solid #11324d;
+}
+
+.infobox:after {
+    border-color: transparent transparent transparent #FFFFFF;
+    border-width: 24px 24px 0;
+    z-index: 1
+}
+
+.infobox .close {
+    cursor: pointer;
+    float: right;
+    font-size: 17px;
+    height: 25px;
+    line-height: 22px;
+    position: relative;
+    text-align: center;
+    top: 0;
+    width: 25px;
+}
+
+.infobox .content {
+    margin: 15px;
+}

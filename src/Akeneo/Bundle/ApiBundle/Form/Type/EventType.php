@@ -15,6 +15,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class EventType extends AbstractType
 {
+    /** @var array */
+    protected $tags;
+
+    public function __construct(array $tags)
+    {
+        $this->tags = $tags;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -23,11 +31,19 @@ class EventType extends AbstractType
         $builder
             ->add('link')
             ->add('place', 'place')
-            ->add('plannedAt', 'datetime', ['widget' => 'single_text'])
+            ->add('plannedAt', 'date',
+                [
+                    'widget' => 'single_text',
+                    'required' => true,
+                    'format' => 'dd MMMM, y',
+                    'attr' => ['class' => 'datepicker']
+                ])
             ->add('user', 'user')
-            ->add('tags', 'collection', [
-                'allow_add' => true,
-                'allow_delete' => true
+            ->add('tags', 'choice', [
+                'choices' => $this->tags,
+                'multiple' => true,
+                'required' => true,
+                'attr' => ['class' => 'browser-default']
             ]);
     }
 
@@ -37,9 +53,9 @@ class EventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'         => 'Akeneo\Bundle\ApiBundle\Document\Event',
+            'data_class' => 'Akeneo\Bundle\ApiBundle\Document\Event',
             'cascade_validation' => true,
-            'csrf_protection'    => false,
+            'csrf_protection' => false,
         ]);
     }
 

@@ -7,6 +7,11 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    gravatar_url: https://s.gravatar.com/avatar/
+    event_tags:
+        pim: PIM
+        akeneo: Akeneo
+        symfony2: Symfony2
 
 framework:
     #esi:             ~
@@ -34,6 +39,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        google_map_api_key: AIzaSyBITmQHpnrjkl8CQOjd8x9JqgATOUESxEU
+    form:
+        resources:
+            - 'AkeneoFrontofficeBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:

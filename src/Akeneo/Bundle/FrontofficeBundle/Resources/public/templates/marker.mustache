@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col s4">
+        <div id="event_wrapper" class="card row z-depth-3">
+            <div class="card-content white-text">
+                <img src="https://s.gravatar.com/avatar/{{ gravatar }}" width="60"/>
+
+                <div class="name">{{ user.name }} - <strong class="group">{{ user.group }}</strong></div>
+
+                <div class="email">
+                    <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                </div>
+                <br />
+                <div class="location">
+                    {{ place.name }}
+                </div>
+                <br/>
+
+            </div>
+            <div class="card-action">
+                Tags: {{ tags }}
+            </div>
+        </div>
+    </div>
+</div>

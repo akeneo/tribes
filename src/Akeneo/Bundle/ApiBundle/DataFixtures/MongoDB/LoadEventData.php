@@ -45,6 +45,13 @@ class LoadEventData implements FixtureInterface
                 ['symfony', 'dam'],
                 'http://sensiolabs.com/'
             ),
+            new Event(
+                new Place(new Location(29.97944, 31.13444), 'Gizeh, Egypt'),
+                new \DateTime('now - 3 weeks'),
+                new User('Foo Bar', 'foo.bar@sensiolabs.com'),
+                ['egypt', 'pyramid'],
+                'http://sensiolabs.com/'
+            ),
         ];
 
         foreach ($events as $event) {
