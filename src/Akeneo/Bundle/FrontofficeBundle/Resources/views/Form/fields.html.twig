@@ -1,0 +1,19 @@
+{% block form_row %}
+    {% spaceless %}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form_widget(form) }}
+                {{ form_label(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        <input class="validate"
+               type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock form_widget_simple %}

@@ -22,7 +22,7 @@ class AddEventType extends AbstractType
         $builder
             ->add('link', 'url')
             ->add('place', 'text', ['required' => true])
-            ->add('plannedAt', 'datetime', ['required' => true])
+            ->add('plannedAt', 'date', ['empty_value' => '', 'widget' => 'single_text', 'required' => true, 'attr' => ['class' => 'datepicker']])
             ->add('tags', 'choice', ['multiple' => true, 'required' => true]);
     }
 

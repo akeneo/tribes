@@ -9,6 +9,13 @@
     border-top: none;
 }
 
+#add_event_form {
+    width: 1200px;
+    margin-left: 50%;
+    position: relative;
+    left: -600px;
+    top: -55px;
+}
 #add_event_button {
     text-align: center;
     position: relative;
