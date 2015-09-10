@@ -39,13 +39,16 @@
             <div class="row">
                 <div class="col-xs-6">
                     {{ form_errors(form) }}
-                    {{ form_row(form.user) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.email) }}
                     {{ form_row(form.place) }}
                 </div>
                 <div class="col-xs-6">
                     {{ form_row(form.plannedAt) }}
                     {{ form_row(form.tags, {attr: {class: "select2"}}) }}
                     {{ form_row(form.link) }}
+                    {{ form_row(form.latitude) }}
+                    {{ form_row(form.longitude) }}
                     <button type="submit" class="btn btn-primary">
                         Send
                     </button>
