@@ -39,9 +39,10 @@ class SendSubscriberEmailSubscriberSpec extends ObjectBehavior
         $this->postPersist($args);
     }
 
-    function it_should_send_an_email_to_the_subscribers($subscriberRepository, $mailer, $templating, LifecycleEventArgs $args, Builder $queryBuilder, Query $query, Subscriber $subscriber)
+    function it_should_send_an_email_to_the_subscribers($subscriberRepository, $mailer, $templating, LifecycleEventArgs $args, Builder $queryBuilder, Query $query)
     {
         $event = new Event(new Place(new Location(4, 2), 'foobar'));
+        $subscriber = new Subscriber(new Location(4, 2), 'foo@bar.com');
         $args->getDocument()->willReturn($event);
 
         $queryBuilder->field('location')->willReturn($queryBuilder);
@@ -49,8 +50,6 @@ class SendSubscriberEmailSubscriberSpec extends ObjectBehavior
         $queryBuilder->maxDistance(5/111.12)->willReturn($queryBuilder);
         $queryBuilder->getQuery()->willReturn($query);
         $query->execute()->willReturn([$subscriber]);
-
-        $subscriber->getEmail()->willReturn('foo@bar.com');
 
         $subscriberRepository->createQueryBuilder()->willReturn($queryBuilder);
         $templating
