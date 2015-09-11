@@ -3,7 +3,7 @@ var map;
 function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 3,
         center: {lat: 47.218505, lng: -1.544658},
         scrollwheel: false
     });
@@ -16,7 +16,7 @@ function loadMap(latitude, longitude, from) {
     if (typeof latitude !== 'undefined' && typeof  longitude !== 'undefined') {
         var mapCenter = new google.maps.LatLng(latitude, longitude);
         map.panTo(mapCenter);
-        map.setZoom(8);
+        map.setZoom(12);
     }
     deleteMarkers();
 
