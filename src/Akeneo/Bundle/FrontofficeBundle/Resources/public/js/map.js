@@ -31,15 +31,12 @@ function loadMap(latitude, longitude, from) {
         })
         .then(function(template, events) {
             events.forEach(function(event) {
-                console.log({
-                    lat: event.place.location.latitude,
-                    lng: event.place.location.longitude
-                });
                 var marker = new google.maps.Marker({
                     position: {
                         lat: event.place.location.latitude,
-                        lng: event.place.location.longitude
+                        lng: event.place.location.longitude,
                     },
+                    icon: '/bundles/akeneofrontoffice/images/marker-' + event.user.group + '.png',
                     map: map
                 });
                 markers.push(marker);
