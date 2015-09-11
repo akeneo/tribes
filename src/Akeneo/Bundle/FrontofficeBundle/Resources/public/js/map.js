@@ -12,24 +12,21 @@ function initMap() {
 }
 
 function loadMap(latitude, longitude, from) {
-    var url = '/app_dev.php/api/events';
-    if (typeof latitude !== 'undefined') {
-        url += '&latitude=' + latitude;
+    var url = generateUrl(from);
+    if (typeof latitude !== 'undefined' && typeof  longitude !== 'undefined') {
+        var mapCenter = new google.maps.LatLng(latitude, longitude);
+        map.panTo(mapCenter);
+        map.setZoom(8);
     }
-    if (typeof longitude !== 'undefined') {
-        url += '&longitude=' + longitude;
-    }
-    if (typeof from !== 'undefined') {
-        url += '&from=' + from;
-        url += '&to=+3 weeks';
-    }
+    deleteMarkers();
+
     $.getJSON(url)
-        .then(function(data) {
-            return $.Deferred(function( defer ) {
+        .then(function (data) {
+            return $.Deferred(function (defer) {
                 $.get('/bundles/akeneofrontoffice/templates/marker.mustache')
-                    .then(function(template) {
+                    .then(function (template) {
                         defer.resolve(template, data);
-                    }, defer.reject );
+                    }, defer.reject);
             }).promise();
         })
         .then(function(template, events) {
@@ -45,7 +42,7 @@ function loadMap(latitude, longitude, from) {
                     },
                     map: map
                 });
-
+                markers.push(marker);
                 marker.addListener('click', function (e) {
                     new google.maps.InfoWindow({
                         content: Mustache.render(template, $.extend(event, {
@@ -57,15 +54,35 @@ function loadMap(latitude, longitude, from) {
         });
 }
 
+function deleteMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+
+    markers = [];
+}
+
+function generateUrl(from) {
+    var url = '/app_dev.php/api/events';
+    if (typeof from !== 'undefined') {
+        url += '?from=' + from;
+        url += '&to=' + from + '+1 day';
+    }
+
+    return url;
+}
+
+var map;
+var markers = [];
 google.maps.event.addDomListener(window, 'load', initMap);
 
-$("#create_event_btn").click(function(event) {
+$("#create_event_btn").click(function (event) {
     event.preventDefault();
     $(window).scrollTo($("#add_event_form"), 1000);
 });
 
-$('#form_filter').submit(function(event) {
-   event.preventDefault();
+$('#form_filter').submit(function (event) {
+    event.preventDefault();
     latitude = $('#filter_latitude').val();
     longitude = $('#filter_longitude').val();
     date = $('#filter_date').val();

@@ -27,18 +27,23 @@
     </a>
 
     <div id="map" class="z-depth-1"></div>
-
+    <br />
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div style="text-align:center;position:absolute;left:50%;top:830px;z-index:100;margin-left:-300px;">
                 <form class="form-inline" id="form_filter">
-                    <div class="form-group">
-                        <input type="text" id="autocomplete" placeholder="Location ..."  name="filter_location" class="form-control geolocate" data-longitude-selector="#filter_longitude" data-latitude-selector="#filter_latitude" />
-                        <input type="date" id="filter_date" name="filter_date"  class="form-control" placeholder="Search for..."/>
-                        <button class="btn btn-default" type="button">Go!</button><br />
+                    <div class="input-group input-group-lg">
+                        <div class="form-group">
+                            <input type="text" id="autocomplete" placeholder="Everywhere" onFocus="geolocate()"
+                                   name="filter_location" class="form-control">
+                            <input type="datetime" id="filter_date" class="datetimepicker form-control" name="filter_date" placeholder="Anytime"/>
+                            <span class="input-group-btn">
+                             <input class="btn btn-default" type="submit"/>
+                            </span>
+                        </div>
+                        <input type="hidden" id="filter_longitude" name="filter_longitude"/>
+                        <input type="hidden" id="filter_latitude" name="filter_longitude"/>
                     </div>
-                    <input type="text" id="filter_longitude" name="filter_longitude" />
-                    <input type="text" id="filter_latitude" name="filter_longitude" />
                 </form>
             </div>
         </div>
