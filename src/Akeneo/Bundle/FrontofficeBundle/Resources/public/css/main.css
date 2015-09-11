@@ -48,3 +48,7 @@
     line-height: 1.33;
     border-radius: 25px;
 }
+
+.date {
+    font-weight: bold;
+}

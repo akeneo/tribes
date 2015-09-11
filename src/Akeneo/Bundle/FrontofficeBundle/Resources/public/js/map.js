@@ -43,9 +43,11 @@ function loadMap(latitude, longitude, from) {
                 });
                 markers.push(marker);
                 marker.addListener('click', function (e) {
+                    eventDate = moment(event.plannedAt);
                     new google.maps.InfoWindow({
                         content: Mustache.render(template, $.extend(event, {
-                            "gravatar": md5(event.user.email.trim())
+                            "gravatar": md5(event.user.email.trim()),
+                            "plannedAt": eventDate.format('L')
                         }))
                     }).open(map, marker);
                 });
