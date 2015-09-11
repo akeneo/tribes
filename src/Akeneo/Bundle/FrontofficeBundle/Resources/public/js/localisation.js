@@ -10,8 +10,6 @@ function initAutocomplete(element) {
         var place = element.data('autocomplete').getPlace();
         var location = place.geometry.location;
 
-        console.log(element.data('longitude-selector'));
-
         $(element.data('longitude-selector')).val(location.lng());
         $(element.data('latitude-selector')).val(location.lat());
     });
