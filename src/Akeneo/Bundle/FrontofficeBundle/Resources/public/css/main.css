@@ -9,6 +9,11 @@
     z-index: 5;
 }
 
+.map-infobox{
+    overflow: hidden;
+    width: 300px;
+}
+
 #create_event_btn {
     position: absolute;
     left: 50%;
