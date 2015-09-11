@@ -1,24 +1,21 @@
-<div class="row">
-    <div class="col s4">
-        <div id="event_wrapper" class="card row z-depth-3">
-            <div class="card-content white-text">
-                <img src="https://s.gravatar.com/avatar/{{ gravatar }}" width="60"/>
-
-                <div class="name">{{ user.name }} - <strong class="group">{{ user.group }}</strong></div>
-
-                <div class="email">
-                    <a href="mailto:{{ user.email }}">{{ user.email }}</a>
-                </div>
-                <br />
-                <div class="location">
-                    {{ place.name }}
-                </div>
-                <br/>
-
+<div class="map-infobox container">
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="https://s.gravatar.com/avatar/{{ gravatar }}" width="60" />
+        </div>
+        <div class="col-sm-9">
+            <div class="name">{{ user.name }} - <strong class="group">{{ user.group }}</strong></div>
+            <div class="email">
+                <a href="mailto:{{ user.email }}">{{ user.email }}</a>
             </div>
-            <div class="card-action">
-                Tags: {{ tags }}
+            <div class="location">
+                {{ place.name }}
             </div>
         </div>
+    </div>
+    <div class="tags">
+        {{#tags}}
+          <span class="btn btn-sm btn-info">{{.}}</span>
+        {{/tags}}
     </div>
 </div>

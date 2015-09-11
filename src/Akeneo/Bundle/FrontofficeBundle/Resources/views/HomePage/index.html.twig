@@ -1,30 +1,65 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <header class="grey lighten-2 z-depth-1">
-        <div id="content">
-            <h2>Let's meet up!</h2>
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.
-            </p>
+    <header id="overview">
+        <div class="container">
+            <img src="{{ asset('bundles/akeneofrontoffice/images/logo-1.png') }}" />
         </div>
     </header>
-    <div id="add_event_button">
-        <a class="btn-floating btn-large waves-effect waves-light red z-depth-2 tooltipped" data-position="right"
-           data-delay="50" data-tooltip="Add your event!"><i class="material-icons"
-                                                             style="font-style: normal;">+</i></a>
-    </div>
+
+    <a id="create_event_btn" class="btn btn-default btn-circle btn-lg">
+        <i class="glyphicon glyphicon-plus"></i>
+    </a>
+
     <div id="map" class="z-depth-1"></div>
 
-    <div id="add_event_form">
-        {% include "@AkeneoFrontoffice/HomePage/forms/add_event.html.twig" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search for..." />
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." />
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+
+        <div id="add_event_form">
+            {{ form_start(form, {'attr':{'class':'col s6'}}) }}
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ form_errors(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.place) }}
+                </div>
+                <div class="col-xs-6">
+                    {{ form_row(form.plannedAt) }}
+                    {{ form_row(form.tags, {attr: {class: "select2"}}) }}
+                    {{ form_row(form.link) }}
+                    {{ form_row(form.latitude) }}
+                    {{ form_row(form.longitude) }}
+                    <button type="submit" class="btn btn-primary">
+                        Send
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="http://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}&callback=initMap&sensor=false&libraries=places"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}&sensor=false&libraries=places"></script>
 {% endblock %}

@@ -22,8 +22,7 @@ class PlaceType extends AbstractType
     {
         $builder
             ->add('name')
-       //     ->add('location', 'location', ['disabled' => true]);
-        ;
+            ->add('location', 'location');
     }
 
     /**

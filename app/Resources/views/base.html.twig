@@ -2,31 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Ping{% endblock %}</title>
+    <title>{% block title %}Akeneo Tribes{% endblock %}</title>
     {% stylesheets
-    'assets/vendor/Materialize/dist/css/materialize.css'
-    'bundles/akeneofrontoffice/css/main.css'
+        'assets/vendor/bootstrap/dist/css/bootstrap.css'
+        'assets/vendor/select2/dist/css/select2.css'
+        'bundles/akeneofrontoffice/css/main.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-<nav>
-    <div class="nav-wrapper  z-depth-1">
-        <a href="#" class="brand-logo">Ping</a>
-    </div>
-</nav>
 <body>
 
 {% block body %}{% endblock %}
+
 {% block javascripts %}
 
 {% endblock %}
 {% javascripts
     'assets/vendor/jquery/dist/jquery.min.js'
-    'assets/vendor/Materialize/dist/js/materialize.js'
+    'assets/vendor/jquery.scrollTo/jquery.scrollTo.js'
+    'assets/vendor/bootstrap/dist/js/bootstrap.js'
+    'assets/vendor/select2/dist/js/select2.js'
     'assets/vendor/mustache.js/mustache.js'
     'assets/vendor/blueimp-md5/js/md5.js'
+    'bundles/akeneofrontoffice/js/main.js'
     'bundles/akeneofrontoffice/js/map.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

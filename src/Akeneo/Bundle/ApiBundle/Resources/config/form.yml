@@ -1,8 +1,6 @@
 services:
     akeneo_api.form.type.event:
         class: Akeneo\Bundle\ApiBundle\Form\Type\EventType
-        arguments:
-            - %event_tags%
         tags:
             - {name: form.type, alias: event}
     akeneo_api.form.type.user:
