@@ -50,6 +50,8 @@ class HomePageController extends Controller
 
         if ($form->isValid()) {
             $this->session->getFlashBag()->add('success', 'Your event have been successfully added !');
+
+            $form = $this->formFactory->create('add_event');
         }
 
         return [

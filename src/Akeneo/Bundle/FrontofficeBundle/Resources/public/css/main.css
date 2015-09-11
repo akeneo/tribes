@@ -3,6 +3,12 @@
     width: 100%;
 }
 
+#flash-message-container div.alert {
+    height: 35px;
+    padding: 5px;
+    text-align: center;
+}
+
 #overview {
     height: 200px;
     padding: 40px;
