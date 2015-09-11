@@ -19,7 +19,7 @@
             <div class="col-lg-6">
                 <form class="form-inline" id="form_filter">
                     <div class="form-group">
-                        <input type="text" id="autocomplete" placeholder="Location ..."  onFocus="geolocate()" name="filter_location" class="form-control">
+                        <input type="text" id="autocomplete" placeholder="Location ..."  name="filter_location" class="form-control geolocate" data-longitude-selector="#filter_longitude" data-latitude-selector="#filter_latitude" />
                         <input type="date" id="filter_date" name="filter_date"  class="form-control" placeholder="Search for..."/>
                         <button class="btn btn-default" type="button">Go!</button><br />
                     </div>
@@ -31,13 +31,17 @@
         <br/>
 
         <div id="add_event_form">
-            {{ form_start(form, {'attr':{'class':'col s6'}}) }}
+            {{ form_start(form) }}
             <div class="row">
                 <div class="col-xs-6">
                     {{ form_errors(form) }}
                     {{ form_row(form.name) }}
                     {{ form_row(form.email) }}
-                    {{ form_row(form.place) }}
+                    {{ form_row(form.place, {'attr': {
+                        'class': 'geolocate',
+                        'data-latitude-selector': '#add_event_latitude',
+                        'data-longitude-selector': '#add_event_longitude'
+                    }}) }}
                 </div>
                 <div class="col-xs-6">
                     {{ form_row(form.plannedAt) }}

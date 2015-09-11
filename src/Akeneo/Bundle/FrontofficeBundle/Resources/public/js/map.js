@@ -1,14 +1,14 @@
+var map;
+
 function initMap() {
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {lat: 47.218505, lng: -1.544658},
         scrollwheel: false
     });
 
-    console.log('initializing map');
     loadMap();
-    console.log('initializing map done');
 }
 
 function loadMap(latitude, longitude, from) {
