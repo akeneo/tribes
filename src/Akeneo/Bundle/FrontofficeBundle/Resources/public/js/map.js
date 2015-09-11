@@ -47,7 +47,7 @@ function loadMap(latitude, longitude, from) {
                     new google.maps.InfoWindow({
                         content: Mustache.render(template, $.extend(event, {
                             "gravatar": md5(event.user.email.trim()),
-                            "plannedAt": eventDate.format('L')
+                            "plannedAt": eventDate.format('L LT')
                         }))
                     }).open(map, marker);
                 });
