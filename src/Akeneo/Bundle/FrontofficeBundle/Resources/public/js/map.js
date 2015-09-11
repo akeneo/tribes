@@ -34,6 +34,10 @@ function loadMap(latitude, longitude, from) {
         })
         .then(function(template, events) {
             events.forEach(function(event) {
+                console.log({
+                    lat: event.place.location.latitude,
+                    lng: event.place.location.longitude
+                });
                 var marker = new google.maps.Marker({
                     position: {
                         lat: event.place.location.latitude,

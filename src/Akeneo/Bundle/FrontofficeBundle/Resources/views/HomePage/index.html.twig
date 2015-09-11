@@ -44,7 +44,9 @@
                     }}) }}
                 </div>
                 <div class="col-xs-6">
-                    {{ form_row(form.plannedAt) }}
+                    {{ form_row(form.plannedAt, {'attr': {
+                        'class': 'datetimepicker'
+                    }}) }}
                     {{ form_row(form.tags, {attr: {class: "select2"}}) }}
                     {{ form_row(form.link) }}
                     {{ form_row(form.latitude) }}
