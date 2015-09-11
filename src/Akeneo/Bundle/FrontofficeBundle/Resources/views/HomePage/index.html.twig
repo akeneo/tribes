@@ -4,7 +4,7 @@
 
     <header id="overview">
         <div class="container">
-            <img src="{{ asset('bundles/akeneofrontoffice/images/logo-1.png') }}" />
+            <img src="{{ asset('bundles/akeneofrontoffice/images/logo-1.png') }}"/>
         </div>
     </header>
 
@@ -17,22 +17,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Search for..." />
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." />
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
+                <form class="form-inline" id="form_filter">
+                    <div class="form-group">
+                        <input type="text" id="autocomplete" placeholder="Location ..."  onFocus="geolocate()" name="filter_location" class="form-control">
+                        <input type="date" id="filter_date" name="filter_date"  class="form-control" placeholder="Search for..."/>
+                        <button class="btn btn-default" type="button">Go!</button><br />
+                    </div>
+                    <input type="text" id="filter_longitude" name="filter_longitude" />
+                    <input type="text" id="filter_latitude" name="filter_longitude" />
+                </form>
+            </div>
+        </div>
+        <br/>
 
         <div id="add_event_form">
             {{ form_start(form, {'attr':{'class':'col s6'}}) }}
