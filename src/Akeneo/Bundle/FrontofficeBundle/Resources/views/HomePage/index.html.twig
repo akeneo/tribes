@@ -2,6 +2,20 @@
 
 {% block body %}
 
+    <div id="flash-message-container">
+        {% for group, messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                <div class="alert alert-{{ group }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
     <header id="overview">
         <div class="container">
             <img src="{{ asset('bundles/akeneofrontoffice/images/logo-1.png') }}"/>
@@ -28,9 +42,11 @@
                 </form>
             </div>
         </div>
-        <br/>
+
+        <hr />
 
         <div id="add_event_form">
+            <h3>Plan your event</h3>
             {{ form_start(form) }}
             <div class="row">
                 <div class="col-xs-6">
@@ -60,6 +76,7 @@
             {{ form_end(form) }}
         </div>
     </div>
+
 {% endblock %}
 
 {% block javascripts %}

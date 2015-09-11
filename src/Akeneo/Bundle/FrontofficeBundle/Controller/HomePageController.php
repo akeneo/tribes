@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Controller for Home Page
@@ -23,12 +24,17 @@ class HomePageController extends Controller
     /** @var FormFactoryInterface */
     protected $formFactory;
 
+    /** @var Session */
+    protected $session;
+
     /**
      * @param FormFactoryInterface $formFactory
+     * @param Session              $session
      */
-    public function __construct(FormFactoryInterface $formFactory)
+    public function __construct(FormFactoryInterface $formFactory, Session $session)
     {
         $this->formFactory = $formFactory;
+        $this->session     = $session;
     }
 
     /**
@@ -42,8 +48,8 @@ class HomePageController extends Controller
         $form = $this->formFactory->create('add_event');
         $form->handleRequest($request);
 
-        if (!$form->isValid()) {
-
+        if ($form->isValid()) {
+            $this->session->getFlashBag()->add('success', 'Your event have been successfully added !');
         }
 
         return [

@@ -3,3 +3,4 @@ services:
         class: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
         arguments:
             - '@form.factory'
+            - '@session'
