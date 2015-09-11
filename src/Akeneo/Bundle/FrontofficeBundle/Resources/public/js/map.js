@@ -13,11 +13,13 @@ function initMap() {
 
 function loadMap(latitude, longitude, from) {
     var url = generateUrl(from);
+
     if (typeof latitude !== 'undefined' && typeof  longitude !== 'undefined') {
         var mapCenter = new google.maps.LatLng(latitude, longitude);
         map.panTo(mapCenter);
         map.setZoom(12);
     }
+
     deleteMarkers();
 
     $.getJSON(url)
@@ -61,7 +63,7 @@ function deleteMarkers() {
 
 function generateUrl(from) {
     var url = '/app_dev.php/api/events';
-    if (typeof from !== 'undefined') {
+    if (typeof from !== 'undefined' && from !== '') {
         url += '?from=' + from;
         url += '&to=' + from + '+1 day';
     }
