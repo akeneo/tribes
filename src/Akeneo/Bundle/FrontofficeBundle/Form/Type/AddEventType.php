@@ -51,8 +51,8 @@ class AddEventType extends AbstractType
                 $data['place'] = [
                     'name'     => $name,
                     'location' => [
-                        'latitude'  => 37.4224764,
-                        'longitude' => -122.0842499
+                        'latitude'  => $data['latitude'],
+                        'longitude' => $data['longitude']
                     ],
                 ];
             }

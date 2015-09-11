@@ -2,62 +2,104 @@
 
 {% block body %}
 
+    <div id="flash-message-container">
+        {% for group, messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                <div class="alert alert-{{ group }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
     <header id="overview">
         <div class="container">
-            <img src="{{ asset('bundles/akeneofrontoffice/images/logo-1.png') }}" />
+            <div class="row">
+                <div class="col-sm-4">
+                    <img id="overview-logo" src="{{ asset('bundles/akeneofrontoffice/images/logo.png') }}"/>
+                </div>
+                <div class="col-sm-8">
+                    <p class="lead">
+                        <em>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet tellus diam. Praesent tempus suscipit mi, et sollicitudin tellus rhoncus in. Pellentesque fringilla tristique velit, at gravida dui. Donec non tincidunt lacus. Curabitur nec leo tempor, faucibus tortor vitae, ultrices ipsum.
+                        </em>
+                    </p>
+                </div>
+            </div>
         </div>
     </header>
 
-    <a id="create_event_btn" class="btn btn-default btn-circle btn-lg">
+    <a id="create_event_btn" class="btn btn-primary btn-circle btn-lg">
         <i class="glyphicon glyphicon-plus"></i>
     </a>
 
     <div id="map" class="z-depth-1"></div>
-
+    <br />
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Search for..." />
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." />
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
+
+            <form id="form_filter" class="form-inline" style="position:absolute;left:50%;top:780px;z-index:100;margin-left:-200px;">
+
+                <div class="form-group">
+                    <input type="text" placeholder="Everywhere" name="filter_location" class="geolocate form-control" data-longitude-selector="#filter_longitude" data-latitude-selector="#filter_latitude" />
+                </div>
+                <div class="form-group">
+
+                    <div class="input-group" role="group">
+                        <input type="datetime" id="filter_date" class="datetimepicker form-control" name="filter_date" placeholder="Anytime" />
+                        <span class="input-group-btn">
+                            <input class="btn btn-primary" type="submit" value="Go !"/>
+                        </span>
+                    </div>
+                </div>
+
+                <input type="hidden" id="filter_longitude" name="filter_longitude"/>
+                <input type="hidden" id="filter_latitude" name="filter_longitude"/>
+
+            </form>
+
+        </div>
+
+        <hr />
 
         <div id="add_event_form">
-            {{ form_start(form, {'attr':{'class':'col s6'}}) }}
+            <h2 class="text-center">Plan your event</h2>
+            {{ form_start(form) }}
             <div class="row">
                 <div class="col-xs-6">
                     {{ form_errors(form) }}
                     {{ form_row(form.name) }}
                     {{ form_row(form.email) }}
-                    {{ form_row(form.place) }}
+                    {{ form_row(form.place, {'attr': {
+                        'class': 'geolocate',
+                        'data-latitude-selector': '#add_event_latitude',
+                        'data-longitude-selector': '#add_event_longitude'
+                    }}) }}
                 </div>
                 <div class="col-xs-6">
-                    {{ form_row(form.plannedAt) }}
+                    {{ form_row(form.plannedAt, {'attr': {
+                        'class': 'datetimepicker'
+                    }}) }}
                     {{ form_row(form.tags, {attr: {class: "select2"}}) }}
                     {{ form_row(form.link) }}
                     {{ form_row(form.latitude) }}
                     {{ form_row(form.longitude) }}
-                    <button type="submit" class="btn btn-primary">
-                        Send
-                    </button>
                 </div>
+            </div>
+            <div class="row text-center">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Send
+                </button>
             </div>
 
             {{ form_end(form) }}
         </div>
     </div>
+
 {% endblock %}
 
 {% block javascripts %}

@@ -78,6 +78,10 @@ class User
             return 'akeneo';
         }
 
+        if (preg_match('/.*@smile\.fr$/', $this->email)) {
+            return 'partner';
+        }
+
         return 'community';
     }
 }
