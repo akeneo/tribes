@@ -3,10 +3,9 @@
 namespace Akeneo\Bundle\FrontofficeBundle\Form\Type;
 
 use Akeneo\Bundle\FrontofficeBundle\Validator\Constraints\Api;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -18,6 +17,22 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class AddEventType extends AbstractType
 {
+    /** @var EventSubscriberInterface */
+    private $subscriber;
+
+    /** @var array */
+    private $tags;
+
+    /**
+     * @param EventSubscriberInterface $subscriber
+     * @param array                    $tags
+     */
+    public function __construct(EventSubscriberInterface $subscriber, array $tags = [])
+    {
+        $this->subscriber = $subscriber;
+        $this->tags = $tags;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -26,56 +41,15 @@ class AddEventType extends AbstractType
         $builder
             ->add('link', 'url', ['required' => false])
             ->add('place', 'text')
-            ->add('name', 'text')
-            ->add('email', 'email')
             ->add('plannedAt', 'datetime', ['widget' => 'single_text'])
             ->add('tags', 'choice', [
                 'multiple' => true,
-                'choices'  => [
-                    'akeneo'            => 'Akeneo',
-                    'agile'             => 'Agile',
-                    'pim'               => 'PIM',
-                    'projectmanagement' => 'Project Management',
-                    'symfony2'          => 'symfony2',
-                    'backbone'          => 'Backbone',
-                    'startup'           => 'Start-up',
-                ],
+                'choices'  => $this->tags,
             ])
             ->add('latitude', 'hidden', ['required' => false])
             ->add('longitude', 'hidden', ['required' => false]);
 
-        $builder->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
-            $data = $event->getData();
-            if (!empty($data['place'])) {
-                $name = $data['place'];
-                $data['place'] = [
-                    'name'     => $name,
-                    'location' => [
-                        'latitude'  => $data['latitude'],
-                        'longitude' => $data['longitude']
-                    ],
-                ];
-            }
-            if (!empty($data['email'])) {
-                $data['user']['email'] = $data['email'];
-            }
-            if (!empty($data['name'])) {
-                $data['user']['name'] = $data['name'];
-            }
-            if (!empty($data['plannedAt'])) {
-                $datetime = $data['plannedAt'];
-                $data['plannedAt'] = $datetime->format(\DateTime::ISO8601);
-            } else {
-                unset($data['plannedAt']);
-            }
-
-            unset($data['email']);
-            unset($data['name']);
-            unset($data['latitude']);
-            unset($data['longitude']);
-
-            $event->setData($data);
-        });
+        $builder->addEventSubscriber($this->subscriber);
     }
 
     /**

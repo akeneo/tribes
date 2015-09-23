@@ -11,29 +11,32 @@
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
 
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-{% block javascripts %}
+    {% block javascripts %}{% endblock %}
 
-{% endblock %}
-{% javascripts
-    'assets/vendor/jquery/dist/jquery.min.js'
-    'assets/vendor/jquery.scrollTo/jquery.scrollTo.js'
-    'assets/vendor/bootstrap/dist/js/bootstrap.js'
-    'assets/vendor/select2/dist/js/select2.js'
-    'assets/vendor/mustache.js/mustache.js'
-    'assets/vendor/blueimp-md5/js/md5.js'
-    'assets/vendor/datetimepicker/jquery.datetimepicker.js'
-    'assets/vendor/moment/min/moment-with-locales.min.js'
-    'bundles/akeneofrontoffice/js/main.js'
-    'bundles/akeneofrontoffice/js/map.js'
-    'bundles/akeneofrontoffice/js/localisation.js' %}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+    {% javascripts
+        'assets/vendor/jquery/dist/jquery.min.js'
+        'assets/vendor/jquery.scrollTo/jquery.scrollTo.js'
+        'assets/vendor/bootstrap/dist/js/bootstrap.js'
+        'assets/vendor/select2/dist/js/select2.js'
+        'assets/vendor/mustache.js/mustache.js'
+        'assets/vendor/blueimp-md5/js/md5.js'
+        'assets/vendor/datetimepicker/jquery.datetimepicker.js'
+        'assets/vendor/moment/min/moment-with-locales.min.js'
+        'bundles/fosjsrouting/js/router.js'
+        'bundles/akeneofrontoffice/js/main.js'
+        'bundles/akeneofrontoffice/js/map.js'
+        'bundles/akeneofrontoffice/js/localisation.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 
 </body>
 </html>

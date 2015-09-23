@@ -68,37 +68,53 @@
 
         <div id="add_event_form">
             <h2 class="text-center">Plan your event</h2>
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-xs-6">
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {{ form_start(form) }}
+                <div class="row">
                     {{ form_errors(form) }}
-                    {{ form_row(form.name) }}
-                    {{ form_row(form.email) }}
-                    {{ form_row(form.place, {'attr': {
-                        'class': 'geolocate',
-                        'data-latitude-selector': '#add_event_latitude',
-                        'data-longitude-selector': '#add_event_longitude'
-                    }}) }}
-                </div>
-                <div class="col-xs-6">
-                    {{ form_row(form.plannedAt, {'attr': {
-                        'class': 'datetimepicker'
-                    }}) }}
-                    {{ form_row(form.tags, {attr: {class: "select2"}}) }}
-                    {{ form_row(form.link) }}
+                    <div class="col-xs-2">
+                        {{ form_row(form.place, {'attr': {
+                            'class': 'geolocate',
+                            'data-latitude-selector': '#add_event_latitude',
+                            'data-longitude-selector': '#add_event_longitude'
+                        }}) }}
+                    </div>
+                    <div class="col-xs-2">
+                        {{ form_row(form.plannedAt, {'attr': {
+                            'class': 'datetimepicker'
+                        }}) }}
+                    </div>
+                    <div class="col-xs-3">
+                        {{ form_row(form.tags, {attr: {class: "select2"}}) }}
+                    </div>
+                    <div class="col-xs-3">
+                        {{ form_row(form.link) }}
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                    </div>
                     {{ form_row(form.latitude) }}
                     {{ form_row(form.longitude) }}
                 </div>
-            </div>
-            <div class="row text-center">
-                <button type="submit" class="btn btn-primary btn-lg">
-                    Send
-                </button>
-            </div>
-
-            {{ form_end(form) }}
+                {{ form_end(form) }}
+            {% else %}
+                {{ render(controller('HWIOAuthBundle:Connect:connect')) }}
+            {% endif %}
         </div>
+
+        <hr />
     </div>
+
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    &copy; Akeneo 2015 - <a href="/terms-of-use">Terms of use</a> - <a href="/privacy-policy">Privacy Policy</a> - <a href="/credits">Credits</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 {% endblock %}
 

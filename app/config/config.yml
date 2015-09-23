@@ -82,3 +82,12 @@ fos_rest:
 
     exception:
         enabled: true
+
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        google:
+            type:          google
+            client_id:     %oauth_google_client_id%
+            client_secret: %oauth_google_client_secret%
+            scope:         "email profile"

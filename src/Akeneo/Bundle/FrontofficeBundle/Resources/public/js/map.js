@@ -64,16 +64,17 @@ function deleteMarkers() {
 }
 
 function generateUrl(from) {
-    var url = '/app_dev.php/api/events';
+    var params = {};
     if (typeof from !== 'undefined' && from !== '') {
-        url += '?from=' + from;
-        url += '&to=' + from + '+1 day';
+        params = {
+            "from": from,
+            "to": from + '+1 day'
+        };
     }
 
-    return url;
+    return Routing.generate('get_events', params);
 }
 
-var map;
 var markers = [];
 google.maps.event.addDomListener(window, 'load', initMap);
 
