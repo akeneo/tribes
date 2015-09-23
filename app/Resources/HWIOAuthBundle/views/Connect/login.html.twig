@@ -1,0 +1,14 @@
+<div class="row text-center">
+    {% if error %}
+        <div class="col-xs-12">
+            <span>{{ error }}</span>
+        </div>
+    {% endif %}
+
+    <div class="col-xs-12">
+        {% for owner in hwi_oauth_resource_owners() %}
+            <a class="oauth-btn {{ owner }}" href="{{ hwi_oauth_login_url(owner) }}"></a>
+        {% endfor %}
+    </div>
+
+</div>

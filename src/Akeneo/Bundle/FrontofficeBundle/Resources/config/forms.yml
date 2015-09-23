@@ -1,0 +1,13 @@
+services:
+    akeneo_frontoffice.form.event_subscriber.event_to_api:
+        class: Akeneo\Bundle\FrontofficeBundle\Form\EventSubscriber\EventToApiSubscriber
+        arguments:
+            - @security.token_storage
+
+    akeneo_frontoffice.form.type.add_event:
+        class: Akeneo\Bundle\FrontofficeBundle\Form\Type\AddEventType
+        arguments:
+            - @akeneo_frontoffice.form.event_subscriber.event_to_api
+            - %event_tags%
+        tags:
+            - { name: form.type, alias: add_event }

@@ -1,3 +1,7 @@
+body {
+    background-color: #f3f3f3;
+}
+
 #flash-message-container {
     position: absolute;
     width: 100%;
@@ -7,6 +11,10 @@
     height: 35px;
     padding: 5px;
     text-align: center;
+}
+
+#copyright {
+    padding: 15px;
 }
 
 #overview {
@@ -57,4 +65,23 @@
 
 .date {
     font-weight: bold;
+}
+
+.oauth-btn.google {
+    width: 196px;
+    height: 48px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.oauth-btn.google {
+    background: url('../images/google/btn_google_signin_light_normal_web.png') transparent 5px 50% no-repeat;
+}
+
+.oauth-btn.google:hover {
+    background-image: url('../images/google/btn_google_signin_light_focus_web.png');
+}
+
+.oauth-btn.google:active {
+    background-image: url('../images/google/btn_google_signin_light_pressed_web.png');
 }

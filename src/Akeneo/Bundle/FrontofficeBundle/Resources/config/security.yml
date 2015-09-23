@@ -1,0 +1,4 @@
+services:
+    akeneo_frontoffice.security.core.user.oauth_provider:
+        class: Akeneo\Bundle\FrontofficeBundle\Security\Core\User\OAuthUserProvider
+        parent: hwi_oauth.user.provider

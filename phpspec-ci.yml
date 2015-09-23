@@ -6,6 +6,8 @@ code_coverage:
   whitelist:
     - src/
   format:
-    - clover
+#    - clover
+    - html
   output:
-    clover: coverage.clover
+    html: coverage
+#    clover: coverage.clover

@@ -51,6 +51,7 @@ class EventController implements ClassResourceInterface
      * @Rest\QueryParam(name="latitude", default=null, nullable=true)
      * @Rest\QueryParam(name="from", default="now", nullable=true)
      * @Rest\QueryParam(name="to", default=null, nullable=true)
+     * @Rest\Route(options={"expose"=true})
      *
      * @return array
      */

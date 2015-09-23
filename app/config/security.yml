@@ -4,8 +4,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        oauth:
+            id: akeneo_frontoffice.security.core.user.oauth_provider
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,10 +15,14 @@ security:
 
         main:
             anonymous: ~
-            # activate different ways to authenticate
+            oauth:
+                resource_owners:
+                    google:        "/login/check-google"
+#                    facebook:      "/login/check-facebook"
+#                    github:        "/login/check-github"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+                oauth_user_provider:
+                    service: akeneo_frontoffice.security.core.user.oauth_provider
