@@ -3,17 +3,7 @@
 {% block body %}
 
     <div id="flash-message-container">
-        {% for group, messages in app.session.flashbag.all %}
-            {% for message in messages %}
-                <div class="alert alert-{{ group }} alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <p>{{ message }}</p>
-                </div>
-            {% endfor %}
-        {% endfor %}
+        {{ render_hinclude(controller('akeneo_frontoffice.controller.homepage:flashAction')) }}
     </div>
 
     <header id="overview">
@@ -66,44 +56,32 @@
 
         <hr />
 
-        <div id="add_event_form">
-            <h2 class="text-center">Plan your event</h2>
+        <div class="row">
+            <h2 class="text-center">Subscribe to the next events</h2>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                {{ form_start(form) }}
-                <div class="row">
-                    {{ form_errors(form) }}
-                    <div class="col-xs-2">
-                        {{ form_row(form.place, {'attr': {
-                            'class': 'geolocate',
-                            'data-latitude-selector': '#add_event_latitude',
-                            'data-longitude-selector': '#add_event_longitude'
-                        }}) }}
-                    </div>
-                    <div class="col-xs-2">
-                        {{ form_row(form.plannedAt, {'attr': {
-                            'class': 'datetimepicker'
-                        }}) }}
-                    </div>
-                    <div class="col-xs-3">
-                        {{ form_row(form.tags, {attr: {class: "select2"}}) }}
-                    </div>
-                    <div class="col-xs-3">
-                        {{ form_row(form.link) }}
-                    </div>
-                    <div class="col-xs-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
-                    </div>
-                    {{ form_row(form.latitude) }}
-                    {{ form_row(form.longitude) }}
-                </div>
-                {{ form_end(form) }}
-            {% else %}
-                {{ render(controller('HWIOAuthBundle:Connect:connect')) }}
-            {% endif %}
+            <p class="text-center lead">
+                You want to keep in touch with the community ?<br />
+                Subscribe to an alert and you will receive an email anytime an event is planned!
+            </p>
+
+            {{ render_hinclude(controller('akeneo_frontoffice.controller.homepage:subscribeAction')) }}
         </div>
 
         <hr />
+
+        <div>
+            <h2 class="text-center">Plan your event</h2>
+
+            <p class="text-center lead">
+                You want to meet some Akeneo community ?<br />
+                Plan an event now and the community will get to you!
+            </p>
+
+            {{ render_hinclude(controller('akeneo_frontoffice.controller.homepage:eventAction')) }}
+        </div>
+
+        <hr />
+
     </div>
 
     <footer id="copyright">

@@ -1,0 +1,11 @@
+{% for group, messages in app.session.flashbag.all %}
+    {% for message in messages %}
+        <div class="alert alert-{{ group }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endfor %}

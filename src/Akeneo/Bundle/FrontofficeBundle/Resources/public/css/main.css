@@ -85,3 +85,7 @@ body {
 .oauth-btn.google:active {
     background-image: url('../images/google/btn_google_signin_light_pressed_web.png');
 }
+
+.form-inline .control-label{
+    padding-right: 10px;
+}

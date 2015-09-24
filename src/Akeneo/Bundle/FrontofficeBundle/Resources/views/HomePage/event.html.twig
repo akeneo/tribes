@@ -1,0 +1,18 @@
+{{ form_start(form, {action: path('event'), attr: {class: 'form-inline'}}) }}
+<div class="text-center">
+    {{ form_errors(form) }}
+    {{ form_row(form.place, {'attr': {
+        'class': 'geolocate',
+        'data-latitude-selector': '#frontoffice_event_latitude',
+        'data-longitude-selector': '#frontoffice_event_longitude'
+    }}) }}
+    {{ form_row(form.plannedAt, {'attr': {
+        'class': 'datetimepicker'
+    }}) }}
+    {{ form_row(form.tags, {attr: {class: "select2"}}) }}
+    {{ form_row(form.link) }}
+    <button type="submit" data-loading-text="Submitting..." class="btn btn-primary">Send</button>
+    {{ form_row(form.latitude) }}
+    {{ form_row(form.longitude) }}
+</div>
+{{ form_end(form) }}

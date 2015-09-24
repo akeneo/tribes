@@ -80,7 +80,7 @@ google.maps.event.addDomListener(window, 'load', initMap);
 
 $("#create_event_btn").click(function (event) {
     event.preventDefault();
-    $(window).scrollTo($("#add_event_form"), 1000);
+    $(window).scrollTo($("#frontoffice_event_form"), 1000);
 });
 
 $('#form_filter').submit(function (event) {

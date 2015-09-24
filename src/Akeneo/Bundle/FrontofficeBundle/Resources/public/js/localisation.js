@@ -32,14 +32,3 @@ function geolocate(element) {
         });
     }
 }
-
-$(function () {
-    $(".geolocate").each(function() {
-        initAutocomplete($(this));
-    });
-
-    $(".geolocate").focus(function() {
-        geolocate($(this));
-    });
-});
-

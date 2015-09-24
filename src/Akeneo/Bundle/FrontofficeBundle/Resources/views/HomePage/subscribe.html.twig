@@ -1,0 +1,16 @@
+{{ form_start(form, {action: path('subscribe'), attr: {class: 'form-inline'}}) }}
+<div class="row text-center">
+    {{ form_errors(form) }}
+
+    {{ form_row(form.place, {'attr': {
+        'class': 'geolocate',
+        'data-latitude-selector': '#frontoffice_subscriber_latitude',
+        'data-longitude-selector': '#frontoffice_subscriber_longitude'
+    }}) }}
+
+    <button type="submit" data-loading-text="Subscribing..." class="btn btn-primary btn">Subscribe</button>
+
+    {{ form_row(form.latitude) }}
+    {{ form_row(form.longitude) }}
+</div>
+{{ form_end(form) }}

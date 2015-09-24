@@ -9,28 +9,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Add event form type
+ * Add an subscriber form type
  *
  * @author    Willy Mesnage <willy.mesnage@akeneo.com>
  * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class AddEventType extends AbstractType
+class SubscriberType extends AbstractType
 {
     /** @var EventSubscriberInterface */
     private $subscriber;
 
-    /** @var array */
-    private $tags;
-
     /**
      * @param EventSubscriberInterface $subscriber
-     * @param array                    $tags
      */
-    public function __construct(EventSubscriberInterface $subscriber, array $tags = [])
+    public function __construct(EventSubscriberInterface $subscriber)
     {
         $this->subscriber = $subscriber;
-        $this->tags = $tags;
     }
 
     /**
@@ -39,13 +34,7 @@ class AddEventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('link', 'url', ['required' => false])
             ->add('place', 'text')
-            ->add('plannedAt', 'datetime', ['widget' => 'single_text'])
-            ->add('tags', 'choice', [
-                'multiple' => true,
-                'choices'  => $this->tags,
-            ])
             ->add('latitude', 'hidden', ['required' => false])
             ->add('longitude', 'hidden', ['required' => false]);
 
@@ -58,7 +47,7 @@ class AddEventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'constraints' => new Api(['resource' => 'events'])
+            'constraints' => new Api(['resource' => 'subscribers'])
         ]);
     }
 
@@ -67,6 +56,6 @@ class AddEventType extends AbstractType
      */
     public function getName()
     {
-        return 'add_event';
+        return 'frontoffice_subscriber';
     }
 }
