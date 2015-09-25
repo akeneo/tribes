@@ -18,12 +18,12 @@ class AddEventTypeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Akeneo\Bundle\FrontofficeBundle\Form\Type\AddEventType');
+        $this->shouldHaveType('Akeneo\Bundle\FrontofficeBundle\Form\Type\EventType');
     }
 
     function it_has_a_name()
     {
-        $this->getName()->shouldReturn('add_event');
+        $this->getName()->shouldReturn('frontoffice_event');
     }
 
     function it_configures_options(OptionsResolver $resolver)

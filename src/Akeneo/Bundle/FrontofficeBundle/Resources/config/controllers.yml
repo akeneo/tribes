@@ -2,5 +2,7 @@ services:
     akeneo_frontoffice.controller.homepage:
         class: Akeneo\Bundle\FrontofficeBundle\Controller\HomePageController
         arguments:
-            - '@form.factory'
-            - '@session'
+            - @form.factory
+            - @session
+            - @security.authorization_checker
+            - @router
